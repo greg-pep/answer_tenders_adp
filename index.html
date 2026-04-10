@@ -434,20 +434,6 @@
       color: var(--muted); letter-spacing: 0.15em;
       text-transform: uppercase; margin-top: 0.4rem;
     }
-    .hero-scroll {
-      position: absolute; bottom: 3rem; left: 5rem;
-      font-family: var(--font-mono); font-size: 0.6rem;
-      color: var(--muted); letter-spacing: 0.2em;
-      display: flex; align-items: center; gap: 1rem;
-      animation: fadeUp 0.8s 1.2s var(--ease) both;
-    }
-    .hero-scroll::before {
-      content: ''; display: block;
-      width: 40px; height: 1px; background: var(--muted);
-      animation: scrollLine 2s 1.5s infinite;
-    }
-    @keyframes scrollLine { 0%,100%{width:20px}50%{width:60px} }
-
     .plane-anim {
       position: absolute; right: 7%; top: 48%;
       transform: translateY(-50%);
@@ -627,6 +613,32 @@
     .cv-close {
       width: 40px; height: 40px; border-radius: 999px; border: 1px solid var(--line);
       background: transparent; color: var(--white); cursor: pointer;
+    }
+    .cv-modal-actions {
+      display: flex;
+      justify-content: flex-end;
+      gap: .8rem;
+      padding: .95rem .25rem .15rem;
+    }
+    .cv-export-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid var(--blue-2);
+      border-radius: 999px;
+      padding: .85rem 1.2rem;
+      background: transparent;
+      color: var(--blue-2);
+      font-size: .72rem;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all .25s ease;
+    }
+    .cv-export-btn:hover {
+      background: var(--blue-2);
+      color: #fff;
     }
     .cv-frame {
       width: 100%;
@@ -828,6 +840,90 @@
       .cv-html .name { font-size: 40px; }
       .cv-html .experience { grid-template-columns: 1fr; }
       .cv-html .company-meta { width: auto; }
+    }
+
+    @media print {
+      @page {
+        size: A4 portrait;
+        margin: 10mm;
+      }
+
+      html, body {
+        background: #fff !important;
+      }
+
+      body * {
+        visibility: hidden !important;
+      }
+
+      #cv-modal,
+      #cv-modal * {
+        visibility: visible !important;
+      }
+
+      #cv-modal {
+        position: static !important;
+        inset: auto !important;
+        display: block !important;
+        background: #fff !important;
+        padding: 0 !important;
+      }
+
+      .cv-modal-inner {
+        max-width: none !important;
+        width: 100% !important;
+        padding: 0 !important;
+        border: none !important;
+        box-shadow: none !important;
+        background: #fff !important;
+      }
+
+      .cv-modal-header,
+      .cv-modal-actions,
+      #cvBackToTop,
+      #cv-close,
+      #cursor,
+      #cursor-ring,
+      #loader,
+      nav,
+      .menu-overlay,
+      .back-to-top,
+      .footer-strip {
+        display: none !important;
+      }
+
+      .cv-frame {
+        height: auto !important;
+        overflow: visible !important;
+        border-radius: 0 !important;
+        background: #fff !important;
+      }
+
+      .cv-html {
+        padding: 0 !important;
+        min-height: auto !important;
+        background: #fff !important;
+      }
+
+      .cv-html .cv {
+        max-width: none !important;
+        border: none !important;
+        border-radius: 0 !important;
+        box-shadow: none !important;
+        transform: none !important;
+      }
+
+      .cv-html .page {
+        min-height: auto !important;
+        page-break-inside: avoid;
+      }
+
+      .cv-html .experience,
+      .cv-html .reveal,
+      .cv-html .reveal-slide-left {
+        opacity: 1 !important;
+        transform: none !important;
+      }
     }
 
     #p3 { background: var(--bg); }
@@ -1355,9 +1451,7 @@
       .section-intro, .refs-intro, .cases-intro, .motiv-intro, .profil-main { padding: 4rem 2rem 2rem; }
       .refs-grid, .motiv-grid, .postule-grid, .tabs-nav, .tab-content, .contact-final, .motiv-personal, .gold-line, .footer-strip { margin-left: 2rem; margin-right: 2rem; }
       .why-block { margin-left: 2rem; margin-right: 2rem; padding: 2rem; }
-      .plane-anim { display: none; }
-      .hero-scroll { left: 2rem; }
-    }
+      .plane-anim { display: none; }    }
 
     @media (max-width: 720px) {
       .back-to-top {
@@ -1435,8 +1529,8 @@
       <span>CV — Gregory Jaklimovitch</span>
       <button class="cv-close" id="cv-close">✕</button>
     </div>
-    <div class="cv-frame">
-      <div class="cv-html" id="cv-html-scroll">
+    <div class="cv-frame" id="cv-html-scroll">
+      <div class="cv-html">
         <div class="cv">
           <section class="page">
             <aside class="sidebar">
@@ -1444,7 +1538,7 @@
                 <div class="section-title">Contact</div>
                 <div class="contact-list">
                   <div class="contact-item"><span class="contact-label">Portfolio :</span> <a href="https://www.liven-studio.fr" target="_blank" rel="noreferrer">www.liven-studio.fr</a></div>
-                  <div class="contact-item"><span class="contact-label">Linkedin :</span> <a href="https://www.linkedin.com/in/gregory-j-a8052811b/" target="_blank" rel="noreferrer">/in/gregory-j-a8052811b</a></div>
+                  <div class="contact-item"><span class="contact-label">LinkedIn :</span> <a href="https://www.linkedin.com/in/gregory-j-a8052811b/" target="_blank" rel="noreferrer">/in/gregory-j-a8052811b</a></div>
                 </div>
               </div>
 
@@ -1527,15 +1621,13 @@
                     <span class="place">92270 Bois-Colombe</span>
                     <span class="date">Depuis Dec 2021</span>
                     <span class="summary">Acteur mondial en assurance-crédit pro</span>
-                    <span class="summary">J’ai optimisé l’UX/UI et le front, et crée leurs projets intra et xtra</span>
+                    <span class="summary">J’ai optimisé l’UX/UI et le front, et créé leurs projets intra et xtra</span>
                   </div>
                 </div>
                 <div class="exp-content">
                   <div class="exp-block"><h4>Optimisation, recherche et design UX</h4><ul><li>Rédaction d'audits, de recueils de besoins, de docs de spécifications</li><li>Réalisation d'interviews, déf de personas, campagnes de tests A/B</li><li>Création de wireframes sous Balsamiq et Figma</li><li>Création de contenus animés (Canvas, CSS et SVG)</li></ul></div>
-                  <div class="exp-block"><h4>Création de maquettes et definition d’identité</h4><ul><li>Homogénéisation des projets à la charte graphique du groupe</li><li>Création / gestion d'un Design-system graphique sous Figma</li><li>Création de maquettes / mockups sous Figma et Adobe XD</li><li>Tests sur iOS et Android / conception de parcours multi-écrans</li></ul></div>
+                  <div class="exp-block"><h4>Création de maquettes et définition d’identité</h4><ul><li>Homogénéisation des projets à la charte graphique du groupe</li><li>Création / gestion d'un design system graphique sous Figma</li><li>Création de maquettes / mockups sous Figma et Adobe XD</li><li>Tests sur iOS et Android / conception de parcours multi-écrans</li></ul></div>
                   <div class="exp-block"><h4>Développement front et intégration</h4><ul><li>Utilisation de HTML5, PHP, JS et Jquery, Stylus, Sass, Twig et Angular</li><li>Environnements sous Yarn, Gulp, Npm, Citrix, et versionning sous Git</li></ul></div>
-                  <div class="exp-block"><h4>Tests navigateurs et périphériques / Web-performances</h4><ul><li>Pages RWD, Tests mobile pour IOS + AndroidConception UX/UI</li><li>Optimisations des ressources (JS, CSS, Images...) / Suivi des perfs web</li></ul></div>
-                  <div class="exp-block"><h4>Gestion de projets et d'équipe</h4><ul><li>Création de road-maps et stories (Jira, Confluence) en Agile (kanban)</li><li>Recrutements, gestion d'équipe, tenue de formations et d’ateliers</li></ul></div>
                 </div>
               </article>
 
@@ -1551,10 +1643,8 @@
                   </div>
                 </div>
                 <div class="exp-content">
-                  <div class="exp-block"><h4>Création de maquettes et definition d’identité</h4><ul><li>Création de wireframes et maquettes dans Adobe XD et Figma</li><li>Travail graphique avec la suite Adobe (Photoshop, Illustrator...)</li><li>Réalisation d’interviews et mise en place de tests A/B</li><li>Rédaction de présentation, d’audits et tenue d’ateliers</li></ul></div>
-                  <div class="exp-block"><h4>Gestion de projet</h4><ul><li>Déf de la road-map des projets + découpages / estimation des tâches</li><li>Travail en remote (Google-meet) en mode Agile (kanban / Lean)</li></ul></div>
-                  <div class="exp-block"><h4>Test / adaptation aux contraintes navigateurs et devices</h4><ul><li>Création et utilisation des maquettes dans Adobe XD</li><li>Travail graphique avec Adobe Photoshop et Illustrator</li></ul></div>
-                  <div class="exp-block"><h4>Développement et intégration front-end</h4><ul><li>HTML5/CSS, PHP, JS natif et Jquery, sous env WordPress et Yarn</li><li>Utilisation de Mailjet pour mettre en place les gabarits de Newsletter</li></ul></div>
+                  <div class="exp-block"><h4>Création de maquettes et définition d’identité</h4><ul><li>Création de wireframes et maquettes dans Adobe XD et Figma</li><li>Travail graphique avec la suite Adobe (Photoshop, Illustrator...)</li><li>Réalisation d’interviews et mise en place de tests A/B</li><li>Rédaction de présentation, d’audits et tenue d’ateliers</li></ul></div>
+                  <div class="exp-block"><h4>Gestion de projet</h4><ul><li>Définition de la road-map des projets + découpages / estimation des tâches</li><li>Travail en remote en mode Agile (kanban / Lean)</li></ul></div>
                 </div>
               </article>
 
@@ -1562,108 +1652,16 @@
                 <div>
                   <div class="role">UX/UI designer<br />Dev front-end<small>Mission freelance</small></div>
                   <div class="company-meta">
-                    <strong><img src="assets/images/logo_lepoint.jpeg" class="company-logo" alt="Le Point" /><a href="https://www.lepoint.fr" target="_blank">Le point</a></strong>
+                    <strong><img src="assets/images/logo_lepoint.jpeg" class="company-logo" alt="Le Point" /><a href="https://www.lepoint.fr" target="_blank">Le Point</a></strong>
                     <span class="place">75015 Paris</span>
                     <span class="date">Sep 2020 - Juin 2021</span>
                     <span class="summary">Média historique presse et web</span>
-                    <span class="summary">J’ai optimisé /géré l’UX/UI et dev le front et introduit l’Agilité</span>
+                    <span class="summary">J’ai optimisé / géré l’UX/UI et développé le front</span>
                   </div>
                 </div>
                 <div class="exp-content">
-                  <div class="exp-block"><h4>Création de maquettes et definition d’identité</h4><ul><li>Création de wireframes et maquettes dans Figma</li><li>Travail graphique avec suite Adobe (Photoshop, Illustrator...)</li><li>Réalisation d’interviews et mise en place de tests A/B</li><li>Présentation de solutions et tenue d’ateliers</li></ul></div>
-                  <div class="exp-block"><h4>Analyse et optimisations UX</h4><ul><li>Réalisation d'interviews, déf de personas, campagnes de tests A/B</li><li>Pages RWD, Tests mobile pour IOS + Android</li><li>Pose / opti parcours utilisateur (Contentsquare, Pool, Adobe Target)</li><li>Pose / suivi tags mesures d'audience (AT-int / Xiti et Tag-commander)</li></ul></div>
-                  <div class="exp-block"><h4>Développement front et intégration</h4><ul><li>Utilisation de HTML5, PHP, JS natif et Jquery</li><li>Environnements sous Gulp, Npm, Docker, et versionning sous Git</li><li>Pose / suivi pub (Taboola, Google Ad-manager, Hubvisor, Criteo)</li></ul></div>
-                  <div class="exp-block"><h4>Web-performances</h4><ul><li>Suivi perfs web avec Google insights, GT metrix et Tableau</li><li>Optimisations de la gestion des ressources (JS, CSS, Images, etc...)</li></ul></div>
-                </div>
-              </article>
-
-              <article class="experience">
-                <div>
-                  <div class="role">Dev front-end<small>Mission freelance</small></div>
-                  <div class="company-meta">
-                    <strong><img src="assets/images/logo_20min.jpeg" class="company-logo" alt="20 Minutes" /><a href="https://www.20minutes.fr" target="_blank">20 minutes</a></strong>
-                    <span class="place">75015 Paris</span>
-                    <span class="date">Nov 2019 - Sept 2020</span>
-                    <span class="summary">Quotidien presse et web très diffusé</span>
-                    <span class="summary">J’ai dev le front React / PHP et optimisé le process UX/UI</span>
-                  </div>
-                </div>
-                <div class="exp-content">
-                  <div class="exp-block"><h4>Développement front et intégration</h4><ul><li>Utilisation de HTML5, Stylus, JS natif (ES6 +, Ajax...), React</li><li>Templating sous Symfony et Twig</li><li>Environnements sous Webpack, Gulp, Yarn, Npm, Docker, Ubuntu</li></ul></div>
-                  <div class="exp-block"><h4>Tests / adaptation aux contraintes navigateurs et devices</h4><ul><li>Création et gestion des pages AMP</li><li>RWD, Mobile first, Compatibilité Edge+, Tests mobile IOS + Android</li></ul></div>
-                  <div class="exp-block"><h4>Process, versionning et tests</h4><ul><li>Utilisation de Git / Github + Création de PR pour l'ajout de features</li><li>Mise en place et maintenance des tests PHP avec Travis</li></ul></div>
-                  <div class="exp-block"><h4>Méthodologie</h4><ul><li>Gestion de stories (avec Zube) en mode Agile (kanban)</li><li>Gestion des tâches en télétravail (avec Slack, Google-meet)</li></ul></div>
-                </div>
-              </article>
-
-              <article class="experience">
-                <div>
-                  <div class="role">UX/UI designer<br />&amp; Dev front-end<small>Mission freelance</small></div>
-                  <div class="company-meta">
-                    <strong><img src="assets/images/logi_sg.jpeg" class="company-logo" alt="Société Générale" /><a href="https://www.societegenerale.com" target="_blank">Soc générale</a></strong>
-                    <span class="place">92000 Nanterre</span>
-                    <span class="date">Dec 2016 - Nov 2019</span>
-                    <span class="summary">Grande banque internationale</span>
-                    <span class="summary">J’ai intégré l’équipe pour créer / optimiser l’UX/UI avec focus front</span>
-                  </div>
-                </div>
-                <div class="exp-content">
-                  <div class="exp-block"><h4>Design et optimisation UI/UX</h4><ul><li>Branding, Création de wireframes Axure et de maquettes Sketch</li><li>Tenue d’interviews et Présentation d’ateliers et de formations</li></ul></div>
-                  <div class="exp-block"><h4>Graphisme et documentation</h4><ul><li>Dév de POC en JS, PHP, Création d'anims (JS/CSS/SVG, Canvas)</li><li>Optis des outils de process et de rédaction de docs (Confluence)</li></ul></div>
-                  <div class="exp-block"><h4>Développement front et intégration</h4><ul><li>(x)html/html5, css/css3/Sass et JS natif/Jquery</li><li>Utilisation de Angular 1, React, et Vue.js</li><li>Pages RWD, rétro-comp IE7, ajout / gestion de tags de tracking</li></ul></div>
-                  <div class="exp-block"><h4>Méthodologie et maintenance</h4><ul><li>Gestion de stories (avec Jira) en mode Agile (kanban) et Scrum</li><li>Prise en main de CMS (sur Open-text) pour la gestion de contenus</li></ul></div>
-                </div>
-              </article>
-
-              <article class="experience">
-                <div>
-                  <div class="role">UX/UI designer<br />Dev front-end<small>Projet</small></div>
-                  <div class="company-meta">
-                    <strong><img src="assets/images/logo_bp.jpeg" class="company-logo" alt="Babypoom" /><a href="https://www.babypoom.com" target="_blank">Babypoom</a></strong>
-                    <span class="date">Depuis Nov 2016</span>
-                    <span class="summary">App de faire-part</span>
-                    <span class="summary">J’ai co-fondé l’app, conçu l’UX/UI et mis en place le dev front React</span>
-                  </div>
-                </div>
-                <div class="exp-content">
-                  <div class="exp-block"><h4>Direction artistique</h4><ul><li>Identité graphique, illustrations, anims, maquettes (mobile/desktop)</li><li>Création / déclinaison de supports print</li><li>Illustrator, Photoshop, After-effects</li></ul></div>
-                  <div class="exp-block"><h4>UX / UI designer</h4><ul><li>Création de wireframes/mockups basés sur les tests et retours</li><li>Mise en place de tout le design system</li><li>Balsamiq, Axure, Adobe XD (avec Zero-height et In-vision)</li></ul></div>
-                  <div class="exp-block"><h4>Développeur front</h4><ul><li>(x)html/html5, css/css3/Sass, JS natif/Jquery, React, Rails</li><li>Utilisation de Onsen (avec Angular 1)</li></ul></div>
-                </div>
-              </article>
-
-              <article class="experience">
-                <div>
-                  <div class="role">UX/UI designer<br />Dev front-end<small>Projet</small></div>
-                  <div class="company-meta">
-                    <strong><img src="assets/images/logo_pepites-design.png" class="company-logo" alt="Pepites Design" /><a href="https://www.pepites-design.fr" target="_blank">Pepites-design</a></strong>
-                    <span class="date">Nov 2015 - Janv 2017</span>
-                    <span class="summary">Agence de design &amp; dev</span>
-                    <span class="summary">J’ai crée des projets diversfiés tech et design</span>
-                  </div>
-                </div>
-                <div class="exp-content">
-                  <div class="exp-block"><h4>Graphisme et design web</h4><ul><li>Directions artistiques web et print (logos, illustrations et animations)</li></ul></div>
-                  <div class="exp-block"><h4>Développement Front-end</h4><ul><li>Dev de projets custom basés sur CMS (Wordpress, Drupal, Pretashop)</li><li>Projets Responsives, conformes W3C et normes SEO, et accessibles</li></ul></div>
-                  <div class="exp-block"><h4>Développement Back-end</h4><ul><li>Dev PHP de thèmes Wordpress et Drupal et créa de b-o customs</li><li>Opti des perfs et de la sécurité de sites (cache, CDN, entêtes HTTP...)</li></ul></div>
-                  <div class="exp-block"><h4>Gestion de projet</h4><ul><li>Conseils, accompagnement et suivi de projet</li><li>Rédaction de spécifications (cahiers des charges, audits, docs...)</li><li>Suivi et mise en place des cadres techniques (hébergements, DNS…)</li></ul></div>
-                </div>
-              </article>
-
-              <article class="experience">
-                <div>
-                  <div class="role">Graphiste<br />Lead intégrateur<small>CDI à temps plein</small></div>
-                  <div class="company-meta">
-                    <strong><img src="assets/images/logo_ciblo.png" class="company-logo" alt="Ciblo" /><a href="https://www.ciblo.net" target="_blank">Ciblo</a></strong>
-                    <span class="date">Sep 2007 - Janv 2014</span>
-                    <span class="summary">Agence de com 360</span>
-                    <span class="summary">J’ai crée / géré de multiples projets web</span>
-                  </div>
-                </div>
-                <div class="exp-content">
-                  <div class="exp-block"><h4>Graphiste et designer web</h4><ul><li>Création de maquettes, ambiances et chartes de sites</li><li>Conception de logos, d'illustrations et d'animations Flash</li></ul></div>
-                  <div class="exp-block"><h4>Responsable d'intégration</h4><ul><li>Dév front-end des projets web (e-commerces et sites vitrines)</li><li>Projets Responsives, conformes W3C et normes SEO, et accessibles</li><li>Ruby (avec Ruby-on-rails), (x)html/html5, css/css3 et JS/Jquery</li></ul></div>
-                  <div class="exp-block"><h4>Chef de projet</h4><ul><li>Suivi de projet avec le client et gestion de l’interaction entre cellules</li><li>Création d’équipe (documents, cahier des charges, mock-ups)</li></ul></div>
+                  <div class="exp-block"><h4>Création de maquettes et définition d’identité</h4><ul><li>Création de wireframes et maquettes dans Figma</li><li>Travail graphique avec suite Adobe</li><li>Réalisation d’interviews et mise en place de tests A/B</li></ul></div>
+                  <div class="exp-block"><h4>Analyse et optimisations UX</h4><ul><li>Pages RWD, tests mobile pour iOS + Android</li><li>Optimisation des parcours utilisateur</li><li>Suivi des tags de mesure d'audience</li></ul></div>
                 </div>
               </article>
             </main>
@@ -1671,6 +1669,9 @@
         </div>
         <button class="back-to-top" id="cvBackToTop">↑</button>
       </div>
+    </div>
+    <div class="cv-modal-actions">
+      <button class="cv-export-btn" id="export-cv-pdf">Exporter en PDF</button>
     </div>
   </div>
 </div>
@@ -1709,7 +1710,6 @@
       <div class="stat"><div class="stat-num">Full</div><div class="stat-label">Stack UX+front</div></div>
     </div>
   </div>
-  <div class="hero-scroll">SCROLL POUR DÉCOUVRIR</div>
 
   <div class="section-intro" style="padding-top: 2rem;">
     <div class="section-tag reveal">La prestation</div>
@@ -2389,6 +2389,7 @@
   const cvModal = document.getElementById('cv-modal');
   const openCv = document.getElementById('open-cv');
   const closeCv = document.getElementById('cv-close');
+  const exportCvPdf = document.getElementById('export-cv-pdf');
 
   if (openCv && cvModal) {
     openCv.addEventListener('click', () => cvModal.classList.add('open'));
@@ -2399,6 +2400,14 @@
   if (cvModal) {
     cvModal.addEventListener('click', (e) => {
       if (e.target === cvModal) cvModal.classList.remove('open');
+    });
+  }
+
+  if (exportCvPdf) {
+    exportCvPdf.addEventListener('click', () => {
+      const wasOpen = cvModal && cvModal.classList.contains('open');
+      if (cvModal && !wasOpen) cvModal.classList.add('open');
+      window.print();
     });
   }
 
