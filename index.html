@@ -315,7 +315,7 @@
     }
     .overlay-link.active {
       background: rgba(255,255,255,.08);
-      border-color: rgba(39,164,168,.34);
+      border-color: rgba(39,164,168,.44);
       box-shadow: inset 0 0 0 1px rgba(39,164,168,.12);
     }
     .overlay-link.active::before {
@@ -369,21 +369,22 @@
     .section-title-wrap {
       display: flex;
       align-items: flex-start;
-      gap: 1rem;
+      gap: 0.72rem;
       margin-bottom: 1.2rem;
     }
     .section-num {
       font-family: var(--font-mono);
-      font-size: clamp(2.45rem, 4vw, 3.6rem);
+      font-size: clamp(2.45rem, 4vw, 3.35rem);
       line-height: 0.88;
       color: #d9e0e7;
       font-weight: 700;
-      min-width: 66px;
-      margin-top: 0.22rem;
+      min-width: 58px;
+      margin-top: 0.52rem;
+      margin-right: -0.16rem;
       flex-shrink: 0;
       display: inline-flex;
       align-items: flex-start;
-      letter-spacing: -0.045em;
+      letter-spacing: -0.04em;
       opacity: 0.92;
     }
     .section-num::after {
@@ -397,7 +398,7 @@
       color: #d4dce4;
     }
     .section-tag {
-      font-family: var(--font-mono); font-size: 0.82rem;
+      font-family: var(--font-mono); font-size: 0.98rem;
       color: var(--teal); letter-spacing: 0.28em; text-transform: uppercase;
       margin-bottom: 1rem; display: flex; align-items: center; gap: 1rem;
     }
@@ -602,13 +603,14 @@
 
     .section-intro {
       padding: 5rem;
+      padding-bottom: 2rem;
       max-width: 1280px; margin: 0 auto; width: 100%;
     }
 
     .mission-grid {
       display: grid; grid-template-columns: 1fr 1fr;
       gap: 1px; background: var(--line);
-      margin-top: 4rem; border: 1px solid var(--line); border-radius: 30px; overflow: hidden;
+      margin-top: 2.1rem; border: 1px solid var(--line); border-radius: 30px; overflow: hidden;
     }
     .mission-card {
       background: var(--glass);
@@ -676,11 +678,15 @@
     .why-block {
       will-change: transform;
       transition: transform .22s linear;
-      margin-top: 5rem; padding: 4rem 5rem;
+      margin-top: 1.2rem;
+      margin-bottom: 5.6rem;
+      padding: 4rem 5rem;
       background: linear-gradient(135deg, rgba(10,24,39,0.84) 0%, rgba(8,20,33,0.94) 100%);
       border: 1px solid var(--line);
       position: relative; overflow: hidden; border-radius: 34px;
-      max-width: 1280px; margin-left: auto; margin-right: auto;
+      max-width: calc(1280px - 10rem);
+      width: calc(100% - 10rem);
+      margin-left: auto; margin-right: auto;
     }
     body.light-mode .why-block { background: linear-gradient(135deg, rgba(255,255,255,.92) 0%, rgba(238,244,251,.96) 100%); }
     .why-block::after {
@@ -713,7 +719,7 @@
 
     #p2 { background: linear-gradient(180deg, var(--bg-soft), var(--bg)); }
     .profil-main {
-      padding: 6rem 5rem 4rem;
+      padding: 4.7rem 5rem 3.2rem;
       max-width: 1280px;
       width: 100%;
       margin: 0 auto;
@@ -722,7 +728,7 @@
       display: grid;
       grid-template-columns: 1.2fr 0.8fr;
       gap: 2rem;
-      margin-top: 3rem;
+      margin-top: 2.1rem;
       align-items: start;
     }
     .profile-card, .identity-card, .cv-modal-inner {
@@ -1186,23 +1192,32 @@
     }
     .ref-card:hover { transform: translateY(-4px); border-color: rgba(39,164,168,.26); }
     .ref-cover {
-      min-height: 180px;
-      display: flex; align-items: center; justify-content: center;
-      padding: 2rem;
+      min-height: 120px;
+      display: block;
+      padding: 0;
       background: linear-gradient(135deg, rgba(50,125,177,.10), rgba(39,164,168,.08));
       position: relative;
+      overflow: hidden;
     }
     .ref-cover img {
-      width: 96px; height: 96px; border-radius: 20px; object-fit: contain; background: rgba(255,255,255,.96); padding: 14px; box-shadow: 0 12px 26px rgba(0,0,0,.12);
+      width: 100%;
+      height: 120px;
+      object-fit: cover;
+      object-position: center;
+      border-radius: 0;
+      background: transparent;
+      padding: 0;
+      box-shadow: none;
     }
     .ref-number {
-      font-family: var(--font-mono);
-      font-size: 2.4rem; font-weight: 700;
-      color: rgba(50,125,177,0.16);
-      position: absolute; top: 1rem; left: 1rem;
-      line-height: 1; pointer-events: none;
+      display: none;
     }
-    .ref-body { padding: 2rem; }
+    .ref-body {
+      padding: 2rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
     .ref-company-badge {
       display: flex; align-items: center; gap: 0.8rem;
       margin-bottom: 1rem;
@@ -1235,6 +1250,192 @@
       font-size: 0.88rem; color: var(--white); line-height: 1.7; border-radius: 0 18px 18px 0;
     }
     .ref-parallel strong { display: block; font-size: 0.68rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--blue-2); margin-bottom: 0.4rem; }
+    .ref-cta {
+      margin-top: 1.35rem;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      align-self: flex-start;
+      border: 1px solid var(--blue-2);
+      border-radius: 999px;
+      padding: 0.82rem 1.2rem;
+      background: transparent;
+      color: var(--blue-2);
+      font-size: 0.68rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all .25s ease;
+    }
+    .ref-cta:hover {
+      background: var(--blue-2);
+      color: #fff;
+      transform: translateY(-1px);
+    }
+
+    .project-modal {
+      position: fixed;
+      inset: 0;
+      z-index: 1250;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      background: rgba(0,0,0,.62);
+      backdrop-filter: blur(10px);
+      padding: 1rem;
+    }
+    .project-modal.open {
+      display: flex;
+    }
+    .project-modal-inner {
+      width: 100%;
+      max-width: 1220px;
+      max-height: calc(100vh - 2rem);
+      overflow: auto;
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 28px;
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(16px);
+      padding: 1rem;
+    }
+    .project-modal-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      padding: .35rem .3rem .9rem;
+      color: var(--white);
+      font-weight: 700;
+    }
+    .project-close {
+      width: 40px;
+      height: 40px;
+      border-radius: 999px;
+      border: 1px solid var(--line);
+      background: transparent;
+      color: var(--white);
+      cursor: pointer;
+    }
+    .project-modal-content {
+      display: grid;
+      gap: 1.4rem;
+    }
+    #project-modal-title {
+      font-family: var(--font-display);
+      font-size: clamp(1.8rem, 3vw, 2.5rem);
+      font-weight: 800;
+      color: var(--white);
+      letter-spacing: -0.03em;
+    }
+    .project-summary {
+      display: grid;
+      grid-template-columns: 1.2fr .8fr;
+      gap: 1.4rem;
+    }
+    .project-summary-main,
+    .project-summary-meta,
+    .project-gallery {
+      background: #ffffff;
+      border: 1px solid rgba(64, 111, 156, 0.14);
+      border-radius: 24px;
+      box-shadow: 0 14px 34px rgba(0,0,0,.08);
+    }
+    .project-summary-main,
+    .project-summary-meta {
+      padding: 1.7rem;
+    }
+    .project-summary-main h3,
+    .project-summary-meta h4,
+    .project-gallery h4 {
+      font-family: var(--font-display);
+      color: var(--blue-2);
+      letter-spacing: -0.02em;
+      margin-bottom: .9rem;
+    }
+    .project-summary-main p,
+    .project-summary-meta p,
+    .project-summary-meta li {
+      color: #4d6277;
+      line-height: 1.8;
+      font-size: .94rem;
+    }
+    .project-summary-meta ul {
+      list-style: none;
+      display: grid;
+      gap: .8rem;
+    }
+    .project-summary-meta strong {
+      color: #102132;
+      font-weight: 700;
+    }
+    .project-gallery {
+      padding: 1.4rem;
+    }
+    .project-gallery-grid {
+      display: grid;
+      grid-template-columns: minmax(0,1fr) minmax(470px, 58%);
+      gap: 1rem;
+      align-items: stretch;
+    }
+    .project-thumbs {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0,1fr));
+      gap: .9rem;
+      align-content: start;
+    }
+    .project-thumb {
+      border: 2px solid rgba(64, 111, 156, 0.22);
+      border-radius: 18px;
+      overflow: hidden;
+      background: #f6f9fc;
+      cursor: pointer;
+      transition: transform .25s ease, border-color .25s ease, box-shadow .25s ease, filter .25s ease;
+      aspect-ratio: 1 / 1;
+      min-height: 0;
+    }
+    .project-thumb:hover,
+    .project-thumb.active {
+      transform: translateY(-2px) scale(1.01);
+      border-color: rgba(39,164,168,.34);
+      box-shadow: 0 12px 28px rgba(0,0,0,.16);
+      filter: saturate(1.06);
+    }
+    .project-thumb img,
+    .project-featured img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+    .project-featured {
+      border: 1px solid var(--line);
+      border-radius: 22px;
+      overflow: hidden;
+      min-height: 520px;
+      background: rgba(255,255,255,.03);
+      position: relative;
+    }
+    .project-featured img {
+      min-height: 520px;
+      transition: opacity .35s ease, transform .5s ease, filter .35s ease;
+    }
+    .project-featured.is-switching img {
+      opacity: .55;
+      transform: scale(1.03);
+      filter: blur(1px);
+    }
+    @media (max-width: 980px) {
+      .project-summary,
+      .project-gallery-grid {
+        grid-template-columns: 1fr;
+      }
+      .project-featured,
+      .project-featured img {
+        min-height: 300px;
+      }
+    }
 
     #p4 { background: linear-gradient(180deg, var(--bg-soft), var(--bg)); }
     .tabs-nav {
@@ -1246,7 +1447,7 @@
       flex-wrap: wrap;
     }
     .tab-btn {
-      padding: 1.05rem 1.85rem;
+      padding: 0.72rem 1.7rem;
       font-family: var(--font-display); font-size: 0.92rem;
       color: var(--muted); letter-spacing: 0.01em; font-weight: 700;
       background: none; border: none; cursor: pointer;
@@ -1323,7 +1524,7 @@
     .case-meta { padding: 2rem; }
     .case-meta-item { margin-bottom: 1.35rem; }
     .case-meta-label {
-      font-family: var(--font-mono); font-size: 0.64rem;
+      font-family: var(--font-mono); font-size: 0.78rem;
       color: var(--blue-2); letter-spacing: 0.15em; text-transform: uppercase;
       margin-bottom: 0.4rem; display: block; font-weight: 700;
     }
@@ -1332,14 +1533,14 @@
     .case-shot {
       overflow: hidden;
       margin: 0 0 2.2rem;
-      padding: 24px;
+      padding: 14px 18px;
       display: flex;
       align-items: center;
       justify-content: center;
     }
     .case-shot img {
       width: 100%;
-      height: 220px;
+      height: 120px;
       object-fit: cover;
       object-position: center;
       border-radius: 18px;
@@ -1350,42 +1551,50 @@
     }
     .flow-diagram h3 {
       font-family: var(--font-display);
-      font-size: 1.2rem; font-weight: 700;
+      font-size: 1.38rem; font-weight: 700;
       color: var(--white); margin-bottom: 2rem;
     }
     .flow-steps {
-      display: flex; align-items: stretch; gap: 0;
+      display: flex; align-items: stretch; gap: .8rem;
     }
     .flow-step {
-      flex: 1;
+      flex: 1.15;
       background: rgba(12,31,51,0.66);
       border: 1px solid var(--line);
-      padding: 1.5rem;
+      padding: 1.55rem 1.4rem 1.3rem;
       position: relative; border-radius: 20px;
     }
     body.light-mode .flow-step { background: rgba(255,255,255,.48); }
-    .flow-step.problem-step { border-color: rgba(255,100,100,0.3); background: rgba(255,50,50,0.04); }
+    .flow-step.problem-step { border-color: rgba(206, 49, 49, 0.52); border-width: 3px; background: rgba(214, 54, 54, 0.06); padding-top: 2.2rem; }
     .flow-step-num {
       font-family: var(--font-mono);
       font-size: 2rem; font-weight: 700;
       color: rgba(50,125,177,0.2); line-height: 1;
     }
     .flow-step-title {
-      font-family: var(--font-mono); font-size: 0.6rem;
-      color: var(--blue-2); letter-spacing: 0.15em; text-transform: uppercase;
+      font-family: var(--font-mono); font-size: 0.86rem;
+      color: var(--blue-2); letter-spacing: 0.08em; text-transform: uppercase;
       margin: 0.7rem 0;
     }
-    .flow-step p { font-size: 0.84rem; color: var(--muted); line-height: 1.75; }
+    .flow-step p { font-size: 0.95rem; color: var(--muted); line-height: 1.78; }
     .flow-arrow {
       display: flex; align-items: center;
-      padding: 0 0.5rem; color: var(--teal); font-size: 1.2rem;
+      padding: 0 0.2rem; color: var(--teal); font-size: 1.2rem;
+      flex: 0 0 18px;
+      justify-content: center;
     }
     .problem-badge {
       display: inline-block;
-      background: rgba(255,80,80,0.15); border: 1px solid rgba(255,80,80,0.3);
-      color: #ff9090; font-size: 0.65rem; padding: 0.2rem 0.6rem;
-      font-family: var(--font-mono); letter-spacing: 0.1em;
-      margin-top: 0.8rem; border-radius: 999px;
+      position: absolute;
+      top: -14px;
+      left: 1rem;
+      background: rgba(214,54,54,0.16); border: 1px solid rgba(214,54,54,0.34);
+      color: #b32020; font-size: 0.8rem; padding: 0.38rem 1.2rem;
+      font-family: var(--font-mono); letter-spacing: 0.08em;
+      margin-top: 0;
+      border-radius: 12px;
+      font-weight: 700;
+      white-space: nowrap;
     }
 
     .solutions-grid {
@@ -1410,8 +1619,9 @@
       content: 'RECOMMANDÉE';
       position: absolute; top: -1px; right: 1.5rem;
       background: var(--teal); color: white;
-      font-family: var(--font-mono); font-size: 0.55rem;
-      letter-spacing: 0.15em; padding: 0.24rem 0.6rem; border-radius: 0 0 10px 10px;
+      font-family: var(--font-mono); font-size: 0.68rem;
+      letter-spacing: 0.15em; padding: 0.34rem 0.8rem; border-radius: 0 0 10px 10px;
+      font-weight: 700;
     }
     .solution-num {
       font-family: var(--font-mono);
@@ -1427,11 +1637,12 @@
     .solution-card p { font-size: 0.9rem; color: var(--muted); line-height: 1.8; }
     .solution-pros-cons { margin-top: 1rem; }
     .pros, .cons {
-      font-size: 0.78rem; padding: 0.35rem 0;
-      display: flex; gap: 0.5rem; line-height: 1.5;
+      font-size: 0.8rem; padding: 0.35rem 0;
+      display: flex; gap: 0.5rem; line-height: 1.45;
+      font-weight: 400;
     }
-    .pros { color: #4ed8d1; }
-    .cons { color: #ff9090; }
+    .pros { color: #0d8a43; font-weight: 400; }
+    .cons { color: #c52828; font-weight: 400; }
     .pros::before { content: '✓'; }
     .cons::before { content: '✗'; }
 
@@ -1741,6 +1952,18 @@
       max-width: 1280px;
       width: 100%;
       margin: 0 auto;
+    }
+    .refs-intro {
+      padding-top: 4rem;
+      padding-bottom: 2.2rem;
+    }
+    .cases-intro {
+      padding-top: 4rem;
+      padding-bottom: 2.2rem;
+    }
+    .motiv-intro {
+      padding-top: 4rem;
+      padding-bottom: 2.2rem;
     }
 
     @media (max-width: 1200px) {
@@ -2333,6 +2556,36 @@
   </div>
 </div>
 
+<div class="project-modal" id="project-modal">
+  <div class="project-modal-inner">
+    <div class="project-modal-header">
+      <span id="project-modal-title">Projet</span>
+      <button class="project-close" id="project-close">✕</button>
+    </div>
+    <div class="project-modal-content">
+      <div class="project-summary">
+        <div class="project-summary-main">
+          <h3 id="project-summary-heading">Focus UX/UI</h3>
+          <p id="project-summary-text"></p>
+        </div>
+        <div class="project-summary-meta">
+          <h4>Repères projet</h4>
+          <ul id="project-meta-list"></ul>
+        </div>
+      </div>
+      <div class="project-gallery">
+        <h4>Voir le travail d'UX/UI</h4>
+        <div class="project-gallery-grid">
+          <div class="project-thumbs" id="project-thumbs"></div>
+          <div class="project-featured" id="project-featured">
+            <img id="project-featured-image" src="" alt="Visuel du projet" />
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
 <section id="p1" class="page scroll-fade">
   <div class="hero-canvas"></div>
   <div class="hero-grid"></div>
@@ -2447,7 +2700,7 @@
         <p>J'interviens à l'intersection du design UX/UI, du front-end et du cadrage fonctionnel. Cette double culture me permet d'imaginer des interfaces crédibles, élégantes, utiles et surtout réalisables, en tenant compte autant de l'expérience utilisateur que des contraintes produit et techniques.</p>
         <p>Au fil de mes missions, j'ai travaillé sur des portails métier, des sites à fort trafic, des interfaces éditoriales, des contextes B2B complexes et des expériences davantage orientées B2C. J'y ai construit une méthode fondée sur la clarté des parcours, la hiérarchisation de l'information, la cohérence graphique, la structuration des composants et la qualité perçue.</p>
         <p>Concrètement, cela signifie que je peux participer à la découverte, cadrer une intention UX, produire des wireframes et des maquettes, documenter un design system, dialoguer avec les développeurs sur la faisabilité, puis accompagner les ajustements jusqu'à la mise en ligne. Cette capacité à relier plusieurs niveaux du projet est l'un de mes principaux atouts.</p>
-        <p>Sur une mission comme ADP / Extime, je peux donc apporter à la fois de la vision, de la méthode, de la production concrète, et une attention forte aux interfaces exposées au public : lisibilité, confiance, hiérarchie, élégance, continuité entre les étapes et articulation entre les différents environnements du groupe.</p>
+        <p>Sur une mission comme ADP / Extime, je peux apporter à la fois de la vision, de la méthode, de la production concrète, et une attention forte aux interfaces exposées au public : lisibilité, confiance, hiérarchie et continuité entre les environnements du groupe.</p>
         <button class="cv-btn" id="open-cv">Voir le CV</button>
       </div>
 
@@ -2504,75 +2757,84 @@
       <div class="section-num">03</div>
       <h2 class="section-h2">Des contextes variés,<br><em>des enjeux similaires.</em></h2>
     </div>
-    <p class="section-lead reveal reveal-delay-2">
-      Chacune de mes missions passées m'a confronté à des problématiques proches de celles d'extime.com : fort trafic, parcours complexes, données sensibles, design system à maintenir, collaboration multi-équipes.
+    <p class="section-lead reveal reveal-delay-2" style="max-width: 100%;">
+      Au fil de mes missions, j’ai travaillé sur des projets présentant plusieurs problématiques proches de celles d’Extime : e-commerce, tunnels critiques, identité de marque forte, forts volumes de trafic, parcours sensibles ou enjeux de fidélisation.
+    </p>
+    <p class="section-lead reveal reveal-delay-3" style="margin-top:1rem; max-width: 100%;">
+      J’ai donc sélectionné ici quelques projets passés qui me semblent les plus pertinents pour mettre en évidence ces proximités, expliquer les parallèles avec Extime et montrer la nature concrète du travail UX/UI mené sur chacun d’eux.
     </p>
   </div>
 
   <div class="refs-grid">
     <div class="ref-card reveal">
-      <div class="ref-cover"><img src="data:image/svg+xml;charset=UTF-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 200'%3E%3Crect width='200' height='200' rx='28' fill='%23ffffff'/%3E%3Ctext x='100' y='108' text-anchor='middle' font-family='Arial,sans-serif' font-size='28' font-weight='700' fill='%231b5f94'%3ECoface%3C/text%3E%3C/svg%3E" alt="Coface"></div>
+      <div class="ref-cover"><img src="assets/images/ben-simon-cover.png" alt="Projet Ben Simon" /></div>
       <div class="ref-body">
-        <div class="ref-company-badge"><div class="ref-dot"></div><div class="ref-company-name">Coface</div><div class="ref-period">Déc. 2021 → présent</div></div>
-        <h3>Portails B2B & Design System</h3>
-        <div class="ref-sector">Assurance-crédit · B2B SaaS</div>
-        <p class="ref-desc">Portails clients et courtiers à fort trafic. Formulaires complexes, données financières sensibles, interfaces métier exigeantes. Lead UX/UI avec encadrement de deux designers juniors, contribution au Design System Figma, tests A/B et analytics.</p>
-        <div class="ref-parallel"><strong>↔ Parallèle extime.com</strong>Expérience identique : portail e-commerce à forts enjeux UX, données sensibles (paiement), parcours complexes, DS à maintenir en équipe.</div>
+        <div class="ref-company-badge"><div class="ref-dot"></div><div class="ref-company-name">Ben Simon</div><div class="ref-period">E-commerce</div></div>
+        <h3>Site e-commerce mode & tunnel d'achat</h3>
+        <div class="ref-sector">Retail · Branding · Conversion</div>
+        <p class="ref-desc">Travail autour d'un site marchand avec forte dimension de marque, hiérarchie produit, pages catalogues et logique de conversion. Le sujet touche directement à la mise en confiance, à la lisibilité de l'offre et à la fluidité du tunnel.</p>
+        <div class="ref-parallel"><strong>↔ Parallèle avec extime</strong>Comme extime.com, le projet articule image de marque, désirabilité, logique e-commerce, réassurance et optimisation du passage à l'achat.</div>
+        <button class="ref-cta" onclick="openProjectModal('ben-simon')">Voir le travail d'UX/UI</button>
       </div>
     </div>
 
     <div class="ref-card reveal reveal-delay-1">
-      <div class="ref-cover"><img src="data:image/svg+xml;charset=UTF-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 200'%3E%3Crect width='200' height='200' rx='28' fill='%23ffffff'/%3E%3Ctext x='100' y='108' text-anchor='middle' font-family='Arial,sans-serif' font-size='24' font-weight='700' fill='%231b5f94'%3ESocGen%3C/text%3E%3C/svg%3E" alt="Société Générale"></div>
+      <div class="ref-cover"><img src="assets/images/societe-generale-cover.png" alt="Projet Société Générale" /></div>
       <div class="ref-body">
-        <div class="ref-company-badge"><div class="ref-dot"></div><div class="ref-company-name">Société Générale</div><div class="ref-period">Déc. 2016 → Nov. 2019</div></div>
-        <h3>Dashboards & parcours sécurisés</h3>
-        <div class="ref-sector">Banque internationale · Trafic massif</div>
-        <p class="ref-desc">Interfaces variées pour une banque internationale : formulaires, dashboards, tunnels sécurisés. Environnement Agile, collaboration étroite avec équipes dev, design system interne, tests utilisateurs itératifs.</p>
-        <div class="ref-parallel"><strong>↔ Parallèle extime.com</strong>Même contexte : parcours de paiement/checkout sensible, collaboration Digital Factory, exigences accessibilité et sécurité UX.</div>
+        <div class="ref-company-badge"><div class="ref-dot"></div><div class="ref-company-name">Société Générale</div><div class="ref-period">Souscription bancaire</div></div>
+        <h3>Parcours complexes & forte volumétrie</h3>
+        <div class="ref-sector">Services financiers · Souscription · UX critique</div>
+        <p class="ref-desc">Conception et optimisation d'interfaces à fort trafic, avec formulaires, tunnels sensibles, tableaux de bord et exigences élevées de clarté, sécurité perçue et cohérence entre logique métier et usage utilisateur.</p>
+        <div class="ref-parallel"><strong>↔ Parallèle avec extime</strong>On retrouve les mêmes enjeux de parcours critiques, de réduction de friction, de réassurance au moment des actions sensibles et de robustesse UX dans un contexte exposé.</div>
+        <button class="ref-cta" onclick="openProjectModal('socgen')">Voir le travail d'UX/UI</button>
       </div>
     </div>
 
     <div class="ref-card reveal">
-      <div class="ref-cover"><img src="data:image/svg+xml;charset=UTF-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 200'%3E%3Crect width='200' height='200' rx='28' fill='%23ffffff'/%3E%3Ctext x='100' y='108' text-anchor='middle' font-family='Arial,sans-serif' font-size='22' font-weight='700' fill='%231b5f94'%3ELe%20Point%3C/text%3E%3C/svg%3E" alt="Le Point"></div>
+      <div class="ref-cover"><img src="assets/images/billet-davion-cover.png" alt="Projet Billet d'avion" /></div>
       <div class="ref-body">
-        <div class="ref-company-badge"><div class="ref-dot"></div><div class="ref-company-name">Le Point</div><div class="ref-period">Sept. 2020 → Juin 2021</div></div>
-        <h3>UX éditoriale & web-performances</h3>
-        <div class="ref-sector">Média digital · Fort trafic</div>
-        <p class="ref-desc">Optimisation UX/UI sur un média d'actualité à fort trafic. SEO, accessibilité, Core Web Vitals, landing pages événementielles, suivi hebdomadaire des performances. Introduction de l'Agile dans l'équipe.</p>
-        <div class="ref-parallel"><strong>↔ Parallèle extime.com</strong>Reporting régulier, gestion de pages promotionnelles/landing, performance web, accessibilité — exactement les attendus de la mission ADP.</div>
+        <div class="ref-company-badge"><div class="ref-dot"></div><div class="ref-company-name">Billet d'avion</div><div class="ref-period">Print & Web</div></div>
+        <h3>Branding aviation & identité d'expérience</h3>
+        <div class="ref-sector">Voyage · Identité graphique · Univers de marque</div>
+        <p class="ref-desc">Projet orienté identité visuelle autour de l'univers aérien, avec déclinaisons print et web. L'enjeu principal portait sur le ton, la cohérence graphique et la capacité à traduire un imaginaire aviation en expérience lisible et différenciante.</p>
+        <div class="ref-parallel"><strong>↔ Parallèle avec extime</strong>Le lien avec ADP est direct sur l'univers de marque : vocabulaire visuel du voyage, perception premium, storytelling et cohérence entre promesse de service et rendu graphique.</div>
+        <button class="ref-cta" onclick="openProjectModal('billet-avion')">Voir le travail d'UX/UI</button>
       </div>
     </div>
 
     <div class="ref-card reveal reveal-delay-1">
-      <div class="ref-cover"><img src="data:image/svg+xml;charset=UTF-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 200'%3E%3Crect width='200' height='200' rx='28' fill='%23ffffff'/%3E%3Ctext x='100' y='108' text-anchor='middle' font-family='Arial,sans-serif' font-size='28' font-weight='700' fill='%231b5f94'%3EAltays%3C/text%3E%3C/svg%3E" alt="Altays"></div>
+      <div class="ref-cover"><img src="assets/images/cofanet-cover.png" alt="Projet Cofanet" /></div>
       <div class="ref-body">
-        <div class="ref-company-badge"><div class="ref-dot"></div><div class="ref-company-name">Altays</div><div class="ref-period">Juin 2021 → Déc. 2021</div></div>
-        <h3>Refonte complète & parcours SaaS</h3>
-        <div class="ref-sector">SaaS RH · B2B</div>
-        <p class="ref-desc">Refonte intégrale d'un site WordPress B2B complexe (500+ clients). Cadrage avec les équipes marketing et tech, wireframes, maquettes, interviews, tests A/B, Contentsquare, heatmaps. Intégration front-end en parallèle.</p>
-        <div class="ref-parallel"><strong>↔ Parallèle extime.com</strong>Maîtrise des outils d'analyse comportementale (Contentsquare, heatmaps) et capacité à intervenir sur des parcours complexes existants — comme le checkout extime.com.</div>
+        <div class="ref-company-badge"><div class="ref-dot"></div><div class="ref-company-name">Cofanet</div><div class="ref-period">Portail B2B</div></div>
+        <h3>Portail métier & souscription à produits d’assurance</h3>
+        <div class="ref-sector">B2B · Parcours complexes · Data sensible</div>
+        <p class="ref-desc">Travail sur un portail dense, centré sur la consultation, la compréhension et la souscription à des produits d’assurance. Le projet impliquait une structuration de contenus complexes, des parcours à clarifier et une cohérence globale entre design system et besoins métier.</p>
+        <div class="ref-parallel"><strong>↔ Parallèle avec extime</strong>Comme sur extime, le design doit rendre simples des parcours chargés, rassurer sur des données sensibles et maintenir une expérience cohérente malgré la complexité fonctionnelle.</div>
+        <button class="ref-cta" onclick="openProjectModal('cofanet')">Voir le travail d'UX/UI</button>
       </div>
     </div>
 
     <div class="ref-card reveal">
-      <div class="ref-cover"><img src="data:image/svg+xml;charset=UTF-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 200'%3E%3Crect width='200' height='200' rx='28' fill='%23ffffff'/%3E%3Ctext x='100' y='108' text-anchor='middle' font-family='Arial,sans-serif' font-size='22' font-weight='700' fill='%231b5f94'%3E20%20Minutes%3C/text%3E%3C/svg%3E" alt="20 Minutes"></div>
+      <div class="ref-cover"><img src="assets/images/le-point-cover.png" alt="Projet Le Point" /></div>
       <div class="ref-body">
-        <div class="ref-company-badge"><div class="ref-dot"></div><div class="ref-company-name">20 Minutes</div><div class="ref-period">Nov. 2019 → Sept. 2020</div></div>
-        <h3>Design System & mobile first</h3>
-        <div class="ref-sector">Presse digitale · React/PHP</div>
-        <p class="ref-desc">Quotidien digital sur stack React/PHP avec design system. Contribution à l'évolution du DS, parcours éditoriaux responsives, Core Web Vitals, AMP, tests A/B sur variantes de mise en page. Travail en Agile (Kanban).</p>
-        <div class="ref-parallel"><strong>↔ Parallèle extime.com</strong>Gestion d'un DS en équipe, intégration front, approche mobile-first — exactement ce qu'implique le maintien et l'évolution de l'UI Kit extime.com.</div>
+        <div class="ref-company-badge"><div class="ref-dot"></div><div class="ref-company-name">Le Point</div><div class="ref-period">Média à fort trafic</div></div>
+        <h3>Fidélisation, lisibilité & identité forte</h3>
+        <div class="ref-sector">Media · Marque historique · Performance</div>
+        <p class="ref-desc">Optimisation d'un environnement éditorial exigeant, dans lequel la marque doit rester forte sans nuire à la lisibilité des contenus, au confort de lecture ni aux objectifs de performance et de fidélisation.</p>
+        <div class="ref-parallel"><strong>↔ Parallèle avec extime</strong>Extime partage cette tension entre identité forte, densité d'informations, performance, logique de fidélisation et nécessité de conserver une lecture claire sur tous les supports.</div>
+        <button class="ref-cta" onclick="openProjectModal('le-point')">Voir le travail d'UX/UI</button>
       </div>
     </div>
 
     <div class="ref-card reveal reveal-delay-1">
-      <div class="ref-cover"><img src="data:image/svg+xml;charset=UTF-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 200'%3E%3Crect width='200' height='200' rx='28' fill='%23ffffff'/%3E%3Ctext x='100' y='108' text-anchor='middle' font-family='Arial,sans-serif' font-size='24' font-weight='700' fill='%231b5f94'%3EBabypoom%3C/text%3E%3C/svg%3E" alt="Babypoom"></div>
+      <div class="ref-cover"><img src="assets/images/babypoom-cover.png" alt="Projet Babypoom" /></div>
       <div class="ref-body">
-        <div class="ref-company-badge"><div class="ref-dot"></div><div class="ref-company-name">Babypoom</div><div class="ref-period">Depuis Nov. 2016</div></div>
-        <h3>Produit B2C de A à Z</h3>
-        <div class="ref-sector">App mobile · B2C</div>
-        <p class="ref-desc">Co-fondateur et designer de l'app. Définition complète de l'UX produit : personas, parcours, wireframes, UI mobile, user tests. Identité visuelle, branding, prototypes animés Figma. Pilotage de prestataires (UI, dev, graphisme).</p>
-        <div class="ref-parallel"><strong>↔ Parallèle extime.com</strong>Vision produit B2C end-to-end, expérience mobile, pilotage de l'expérience utilisateur avec une exigence sur la cohérence graphique — applicable directement sur extime app mobile.</div>
+        <div class="ref-company-badge"><div class="ref-dot"></div><div class="ref-company-name">Babypoom</div><div class="ref-period">Produit B2C</div></div>
+        <h3>Identité, illustration & expérience engageante</h3>
+        <div class="ref-sector">App & web · Branding · Animation</div>
+        <p class="ref-desc">Projet conçu de bout en bout, avec travail poussé sur l'identité, l'illustration, les animations, la communication et la qualité perçue. La fidélisation reposait autant sur l'utilité que sur l'émotion et la cohérence visuelle.</p>
+        <div class="ref-parallel"><strong>↔ Parallèle avec extime</strong>On retrouve un même besoin de cohérence entre image de marque, expérience utilisateur, engagement, animation et continuité entre les différents points de contact du parcours.</div>
+        <button class="ref-cta" onclick="openProjectModal('babypoom')">Voir le travail d'UX/UI</button>
       </div>
     </div>
   </div>
@@ -2624,10 +2886,10 @@
           La problématique ne porte pas seulement sur un ajustement graphique du module bancaire. Elle révèle surtout un point de friction critique dans le tunnel d’achat. Au moment précis où l’utilisateur s’apprête à payer, il quitte brutalement l’univers visuel d’Extime pour être redirigé vers un environnement externe, moins rassurant et moins cohérent avec le reste du parcours.
         </p>
         <p style="margin-top:1rem;">
-          Cette rupture crée une surcharge cognitive au moment le plus sensible du tunnel. Changement d’URL, disparition des repères de marque, perte de continuité visuelle : autant de signaux qui peuvent fragiliser la confiance, ralentir la prise de décision, voire provoquer un abandon pur et simple du panier.
+          Cette rupture crée une surcharge cognitive au moment le plus sensible du tunnel. Changement d’URL, disparition des repères de marque et perte de continuité visuelle peuvent fragiliser la confiance, ralentir la décision, voire provoquer un abandon du panier.
         </p>
         <p style="margin-top:1rem;">
-          L’enjeu est donc double. Il s’agit, d’une part, de préserver la perception de sécurité et de fluidité côté utilisateur ; d’autre part, d’absorber une contrainte technique forte, puisque les données de paiement doivent continuer à transiter par l’environnement sécurisé de la banque. Dans ce contexte, le rôle du design n’est pas de masquer artificiellement la technique, mais de construire une continuité visuelle et interactionnelle suffisamment solide pour réduire le choc perçu.
+          L’enjeu est donc double : préserver la perception de sécurité côté utilisateur, tout en absorbant une contrainte technique forte. Le rôle du design n’est pas de masquer la technique, mais de construire une continuité visuelle et interactionnelle suffisamment solide pour réduire le choc perçu.
         </p>
         <p style="margin-top:1rem;">
           La réponse UX/UI attendue consiste donc à créer une interface de transition maîtrisée : même langage graphique, mêmes repères, même niveau de réassurance, même logique de parcours. Autrement dit, faire en sorte que, dans l’esprit de l’utilisateur, le paiement reste une étape naturelle de l’expérience Extime, même lorsque l’architecture technique impose un intermédiaire externe.
@@ -2635,7 +2897,7 @@
       </div>
 
       <div class="flow-diagram reveal">
-      <h3>Parcours actuel — les points de rupture</h3>
+      <h3>Parcours actuel : les points de rupture</h3>
       <div class="flow-steps">
         <div class="flow-step">
           <div class="flow-step-num">1</div>
@@ -2645,13 +2907,13 @@
         <div class="flow-arrow">→</div>
         <div class="flow-step">
           <div class="flow-step-num">2</div>
-          <div class="flow-step-title">Page Panier</div>
+          <div class="flow-step-title">Page panier</div>
           <p>Récapitulatif des articles. Toujours dans l'univers extime.com. CTA "Valider mon panier".</p>
         </div>
         <div class="flow-arrow">→</div>
         <div class="flow-step problem-step">
           <div class="flow-step-num">3</div>
-          <div class="flow-step-title">⚠ Rupture</div>
+          <div class="flow-step-title">Rupture de parcours</div>
           <p>L'utilisateur quitte extime.com. Nouvelle URL, nouveau design, perte des repères visuels.</p>
           <span class="problem-badge">POINT DE FRICTION MAJEUR</span>
         </div>
@@ -2761,27 +3023,6 @@
     </p>
   </div>
 
-  <div class="motiv-grid">
-    <div class="motiv-block reveal">
-      <h3>La mission correspond à ce que je cherche</h3>
-      <p>
-        Je recherche une mission longue durée à fort contenu UX/UI, avec une réelle implication dans les décisions de conception. L'expertise que vous recherchez — wireframes, maquettes, Design System, conseil UX, collaboration dev — correspond exactement à ce que je pratique depuis 15 ans.
-      </p>
-      <p>
-        Travailler sur extime.com, c'est intervenir sur une interface au croisement du e-commerce et de l'expérience aéroportuaire — un terrain particulièrement stimulant, avec des enjeux réels et mesurables.
-      </p>
-    </div>
-    <div class="motiv-block reveal reveal-delay-1">
-      <h3>Le part-time comme atout, pas comme contrainte</h3>
-      <p>
-        ~10 jours par mois me permettent de m'investir pleinement sur cette mission, sans dispersion. Ce format garantit une concentration optimale : chaque jour est dédié à votre projet, avec une fraîcheur de regard que le temps plein épuise parfois.
-      </p>
-      <p>
-        C'est aussi un engagement de durée : je cherche une relation freelance stable, un projet dans lequel m'installer et m'impliquer sur la durée — pas une mission de passage.
-      </p>
-    </div>
-  </div>
-
   <div class="motiv-personal reveal">
     <h3>Une passion pour <em>l'univers de l'aviation</em></h3>
     <p>
@@ -2822,7 +3063,7 @@
     <div class="contact-links">
       <a href="mailto:greg@liven-studio.fr" class="btn-gold hidden">greg@liven-studio.fr</a>
       <a href="tel:+33651419697" class="btn-gold hidden">06 51 41 96 97</a>
-      <a href="https://linkedin.com/in/gregory-j-a8052811b" target="_blank" class="btn-gold">LinkedIn</a>
+      
     </div>
   </div>
 
@@ -3227,6 +3468,139 @@
   } catch (e) {}
   applyTheme(storedTheme ? storedTheme === 'light' : true);
   runSplitFlapTitle();
+
+  const projectData = {
+    'ben-simon': {
+      title: 'Ben Simon — e-commerce mode',
+      summary: `Projet e-commerce centré sur la désirabilité produit, la lisibilité de l'offre et la fluidité du tunnel. Le travail UX/UI a consisté à clarifier les parcours, hiérarchiser les contenus commerciaux, structurer les points de réassurance et articuler l'identité graphique avec les enjeux de conversion. L'approche s'appuie sur la compréhension des comportements d'achat, le recueil des attentes métier, puis la construction de wireframes, de maquettes et de prototypes cohérents.`,
+      meta: [
+        ['Nom', 'Ben Simon'],
+        ['Période', 'Projet e-commerce / marque'],
+        ['Activité', 'Retail mode, catalogue, tunnel d’achat'],
+        ['Focus UX/UI', 'Navigation, réassurance, conversion, identité de marque']
+      ],
+      images: ['assets/images/ben-simon-1.png','assets/images/ben-simon-2.png','assets/images/ben-simon-3.png','assets/images/ben-simon-4.png','assets/images/ben-simon-5.png','assets/images/ben-simon-6.png','assets/images/ben-simon-7.png','assets/images/ben-simon-8.png','assets/images/ben-simon-9.png','assets/images/ben-simon-10.png','assets/images/ben-simon-11.png','assets/images/ben-simon-12.png']
+    },
+    'socgen': {
+      title: 'Société Générale — parcours complexes',
+      summary: `Dans ce contexte, l'UX/UI porte sur des parcours critiques, de la souscription, des formulaires et des interfaces à forte responsabilité. Le travail consiste à organiser les étapes, réduire la friction, rendre les choix compréhensibles et maintenir un niveau élevé de confiance. La démarche s'appuie sur le recueil de besoins, l'analyse fonctionnelle, puis la construction de wireframes détaillés, de maquettes et de prototypes.`,
+      meta: [
+        ['Nom', 'Société Générale'],
+        ['Période', 'Mission UX/UI & front'],
+        ['Activité', 'Souscription, services bancaires, dashboards'],
+        ['Focus UX/UI', 'Parcours sensibles, formulaires, robustesse, clarté']
+      ],
+      images: ['assets/images/socgen-1.png','assets/images/socgen-2.png','assets/images/socgen-3.png','assets/images/socgen-4.png','assets/images/socgen-5.png','assets/images/socgen-6.png','assets/images/socgen-7.png','assets/images/socgen-8.png','assets/images/socgen-9.png','assets/images/socgen-10.png','assets/images/socgen-11.png','assets/images/socgen-12.png']
+    },
+    'billet-avion': {
+      title: 'Billet d’avion — branding aviation',
+      summary: `Projet orienté identité et expérience de marque autour de l’univers aérien. Le travail UX/UI s’est concentré sur la traduction d’un imaginaire fort en langage visuel cohérent, aussi bien en supports print qu’en écrans web. La phase amont a permis de cadrer les intentions, définir le ton et la hiérarchie des messages, avant une phase de wireframes puis de maquettes plus incarnées.`,
+      meta: [
+        ['Nom', 'Billet d’avion'],
+        ['Période', 'Projet print & web'],
+        ['Activité', 'Branding aviation, supports visuels'],
+        ['Focus UX/UI', 'Direction artistique, hiérarchie, cohérence de marque']
+      ],
+      images: ['assets/images/billet-avion-1.png','assets/images/billet-avion-2.png','assets/images/billet-avion-3.png','assets/images/billet-avion-4.png','assets/images/billet-avion-5.png','assets/images/billet-avion-6.png','assets/images/billet-avion-7.png','assets/images/billet-avion-8.png','assets/images/billet-avion-9.png','assets/images/billet-avion-10.png']
+    },
+    'cofanet': {
+      title: 'Cofanet — portail métier',
+      summary: `Sur Cofanet, l’enjeu UX/UI repose sur la simplification d’interfaces chargées, la compréhension de données complexes et l’alignement entre besoins métier, contraintes techniques et lisibilité écran. Le travail commence par l’analyse des usages, le recueil de besoins et l’identification des points de friction, puis se prolonge par des wireframes, des spécifications et une phase UI reliée au design system.`,
+      meta: [
+        ['Nom', 'Cofanet'],
+        ['Période', 'Mission longue durée'],
+        ['Activité', 'Portail B2B, services et données métier'],
+        ['Focus UX/UI', 'Structuration, design system, clarification des parcours']
+      ],
+      images: ['assets/images/cofanet-1.png','assets/images/cofanet-2.png','assets/images/cofanet-3.png','assets/images/cofanet-4.png','assets/images/cofanet-5.png','assets/images/cofanet-6.png','assets/images/cofanet-7.png','assets/images/cofanet-8.png','assets/images/cofanet-9.png','assets/images/cofanet-10.png','assets/images/cofanet-11.png','assets/images/cofanet-12.png']
+    },
+    'le-point': {
+      title: 'Le Point — média à fort trafic',
+      summary: `Le travail UX/UI sur Le Point se situe au croisement de la lisibilité éditoriale, de l’identité de marque, de la performance et de la fidélisation. L’approche implique l’observation des usages, l’exploitation de la donnée comportementale, puis la transformation de ces constats en optimisations concrètes : hiérarchie visuelle, confort de lecture, structure des pages et variantes testables.`,
+      meta: [
+        ['Nom', 'Le Point'],
+        ['Période', 'Mission UX/UI & front'],
+        ['Activité', 'Média digital, contenus, fidélisation'],
+        ['Focus UX/UI', 'Lisibilité, performance, marque, optimisation continue']
+      ],
+      images: ['assets/images/le-point-1.png','assets/images/le-point-2.png','assets/images/le-point-3.png','assets/images/le-point-4.png','assets/images/le-point-5.png','assets/images/le-point-6.png','assets/images/le-point-7.png','assets/images/le-point-8.png','assets/images/le-point-9.png','assets/images/le-point-10.png']
+    },
+    'babypoom': {
+      title: 'Babypoom — produit B2C & identité',
+      summary: `Babypoom est un bon exemple de projet où la démarche UX/UI va de la définition produit jusqu’à la représentation visuelle. Le travail englobe le recueil de besoins, la compréhension des usages, la définition de parcours, puis la construction de wireframes et de prototypes. La dimension UI est ensuite développée à travers l’identité graphique, les illustrations, les animations et le design system.`,
+      meta: [
+        ['Nom', 'Babypoom'],
+        ['Période', 'Co-fondation / produit'],
+        ['Activité', 'App & web, communication émotionnelle'],
+        ['Focus UX/UI', 'Identité, animation, engagement, parcours complets']
+      ],
+      images: ['assets/images/babypoom-1.png','assets/images/babypoom-2.png','assets/images/babypoom-3.png','assets/images/babypoom-4.png','assets/images/babypoom-5.png','assets/images/babypoom-6.png','assets/images/babypoom-7.png','assets/images/babypoom-8.png','assets/images/babypoom-9.png','assets/images/babypoom-10.png']
+    }
+  };
+
+  const projectModal = document.getElementById('project-modal');
+  const projectClose = document.getElementById('project-close');
+  const projectModalTitle = document.getElementById('project-modal-title');
+  const projectSummaryText = document.getElementById('project-summary-text');
+  const projectMetaList = document.getElementById('project-meta-list');
+  const projectThumbs = document.getElementById('project-thumbs');
+  const projectFeatured = document.getElementById('project-featured');
+  const projectFeaturedImage = document.getElementById('project-featured-image');
+
+  function setProjectFeatured(src, alt) {
+    if (!projectFeatured || !projectFeaturedImage) return;
+    projectFeatured.classList.add('is-switching');
+    setTimeout(() => {
+      projectFeaturedImage.src = src;
+      projectFeaturedImage.alt = alt;
+    }, 120);
+    setTimeout(() => {
+      projectFeatured.classList.remove('is-switching');
+    }, 260);
+  }
+
+  function buildProjectThumb(src, alt, isActive) {
+    const btn = document.createElement('button');
+    btn.className = 'project-thumb' + (isActive ? ' active' : '');
+    btn.type = 'button';
+    const img = document.createElement('img');
+    img.src = src;
+    img.alt = alt;
+    btn.appendChild(img);
+        btn.addEventListener('click', () => {
+      projectThumbs.querySelectorAll('.project-thumb').forEach((thumb) => thumb.classList.remove('active'));
+      btn.classList.add('active');
+      setProjectFeatured(src, alt);
+    });
+    return btn;
+  }
+
+  function openProjectModal(key) {
+    const data = projectData[key];
+    if (!data || !projectModal) return;
+    projectModalTitle.textContent = data.title;
+    projectSummaryText.textContent = data.summary;
+    projectMetaList.innerHTML = '';
+    data.meta.forEach(([label, value]) => {
+      const li = document.createElement('li');
+      li.innerHTML = '<strong>' + label + ' :</strong> ' + value;
+      projectMetaList.appendChild(li);
+    });
+    projectThumbs.innerHTML = '';
+    data.images.forEach((src, index) => {
+      projectThumbs.appendChild(buildProjectThumb(src, data.title + ' — visuel ' + (index + 1), index === 0));
+    });
+    setProjectFeatured(data.images[0], data.title + ' — visuel principal');
+    projectModal.classList.add('open');
+  }
+  window.openProjectModal = openProjectModal;
+
+  if (projectClose && projectModal) {
+    projectClose.addEventListener('click', () => projectModal.classList.remove('open'));
+    projectModal.addEventListener('click', (e) => {
+      if (e.target === projectModal) projectModal.classList.remove('open');
+    });
+  }
 
   const cvModal = document.getElementById('cv-modal');
   const openCv = document.getElementById('open-cv');
