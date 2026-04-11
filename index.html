@@ -319,16 +319,8 @@
       box-shadow: inset 0 0 0 1px rgba(39,164,168,.12);
     }
     .overlay-link.active::before {
-      content: '';
-      position: absolute;
-      left: 10px;
-      top: 50%;
-      transform: translateY(-50%);
-      width: 6px;
-      height: 6px;
-      border-radius: 50%;
-      background: var(--teal);
-      box-shadow: 0 0 0 6px rgba(39,164,168,.08);
+      content: none;
+      display: none;
     }
     .overlay-link:hover { background: rgba(255,255,255,.06); transform: translateX(2px); }
     body.light-mode .overlay-link:hover { background: rgba(12,31,51,.05); }
@@ -1558,14 +1550,15 @@
       display: flex; align-items: stretch; gap: .8rem;
     }
     .flow-step {
-      flex: 1.15;
+      flex: 1.32;
       background: rgba(12,31,51,0.66);
       border: 1px solid var(--line);
-      padding: 1.55rem 1.4rem 1.3rem;
-      position: relative; border-radius: 20px;
+      padding: 0.95rem 1rem 1.1rem;
+      position: relative;
+      border-radius: 20px;
     }
     body.light-mode .flow-step { background: rgba(255,255,255,.48); }
-    .flow-step.problem-step { border-color: rgba(206, 49, 49, 0.52); border-width: 3px; background: rgba(214, 54, 54, 0.06); padding-top: 2.2rem; }
+    .flow-step.problem-step { border-color: rgba(206, 49, 49, 0.52); border-width: 3px; background: rgba(214, 54, 54, 0.06); padding-top: 0.95rem; padding-bottom: 1.1rem; }
     .flow-step-num {
       font-family: var(--font-mono);
       font-size: 2rem; font-weight: 700;
@@ -1576,25 +1569,39 @@
       color: var(--blue-2); letter-spacing: 0.08em; text-transform: uppercase;
       margin: 0.7rem 0;
     }
-    .flow-step p { font-size: 0.95rem; color: var(--muted); line-height: 1.78; }
+    .flow-step p { font-size: 0.84rem; color: var(--muted); line-height: 1.48; }
     .flow-arrow {
-      display: flex; align-items: center;
-      padding: 0 0.2rem; color: var(--teal); font-size: 1.2rem;
-      flex: 0 0 18px;
+      display: flex;
+      align-items: center;
+      padding: 0 0.12rem;
+      color: var(--teal);
+      font-size: 1.2rem;
+      flex: 0 0 12px;
       justify-content: center;
     }
     .problem-badge {
       display: inline-block;
-      position: absolute;
-      top: -14px;
-      left: 1rem;
-      background: rgba(214,54,54,0.16); border: 1px solid rgba(214,54,54,0.34);
-      color: #b32020; font-size: 0.8rem; padding: 0.38rem 1.2rem;
-      font-family: var(--font-mono); letter-spacing: 0.08em;
-      margin-top: 0;
-      border-radius: 12px;
+      position: static;
+      left: auto;
+      right: auto;
+      bottom: auto;
+      top: auto;
+      z-index: auto;
+      max-width: 100%;
+      background: rgba(214,54,54,0.16);
+      border: 1px solid rgba(214,54,54,0.34);
+      color: #b32020;
+      font-size: 0.62rem;
+      padding: 0.3rem 0.7rem;
+      font-family: var(--font-mono);
+      letter-spacing: 0.06em;
+      margin-top: 0.95rem;
+      border-radius: 10px;
       font-weight: 700;
-      white-space: nowrap;
+      white-space: normal;
+      text-align: left;
+      line-height: 1.35;
+      box-sizing: border-box;
     }
 
     .solutions-grid {
@@ -1614,7 +1621,7 @@
     }
     .solution-card:hover { border-color: var(--teal); transform: translateY(-4px); background: rgba(9,25,40,0.92); }
     body.light-mode .solution-card:hover { background: rgba(255,255,255,.92); }
-    .solution-card.recommended { border-color: rgba(39,164,168,0.34); }
+    .solution-card.recommended { border-color: rgba(39,164,168,0.34); border-width: 3px; }
     .solution-card.recommended::before {
       content: 'RECOMMANDÉE';
       position: absolute; top: -1px; right: 1.5rem;
@@ -2839,7 +2846,7 @@
     </div>
   </div>
 
-  <div class="gold-line"></div>
+  
 </section>
 
 <section id="p4" class="page scroll-fade">
@@ -2902,7 +2909,7 @@
         <div class="flow-step">
           <div class="flow-step-num">1</div>
           <div class="flow-step-title">Navigation extime.com</div>
-          <p>L'utilisateur browse, sélectionne ses articles, ajoute au panier. Univers visuel extime.com cohérent.</p>
+          <p>L'utilisateur parcourt, sélectionne ses articles, ajoute au panier. Univers visuel extime.com cohérent.</p>
         </div>
         <div class="flow-arrow">→</div>
         <div class="flow-step">
