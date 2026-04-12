@@ -1800,8 +1800,9 @@
     @media (max-width: 720px) {
       .back-to-top { right: 1rem; bottom: 1rem; width: 48px; height: 48px; }
       nav { padding: 0 1rem; }
-      .hero-stats { gap: 1rem; }
       .hero-content { padding: 6.8rem 1rem 4rem; }
+      .section-intro, .refs-intro, .cases-intro, .motiv-intro, .profil-main { padding: 4rem 1rem 2rem; }
+
       .mission-grid,
       .profil-grid,
       .refs-grid,
@@ -1812,24 +1813,90 @@
       .audit-grid,
       .why-cols,
       .project-summary,
-      .project-gallery-grid,
       .cv-html .page {
         grid-template-columns: 1fr;
       }
-      .flow-steps { flex-direction: column; gap: 1rem; }
-      .flow-arrow { transform: rotate(90deg); justify-content: center; padding: .4rem 0; }
-      .section-intro, .refs-intro, .cases-intro, .motiv-intro, .profil-main { padding: 4rem 1rem 2rem; }
-      .refs-grid, .motiv-grid, .tabs-nav, .tab-content, .contact-final, .motiv-personal, .gold-line { margin-left: 1rem; margin-right: 1rem; }
+
+      .mission-grid,
+      .refs-grid,
+      .motiv-grid,
       .postule-grid,
       .why-block,
+      .tabs-nav,
+      .tab-content,
+      .contact-final,
+      .motiv-personal,
+      .gold-line,
       .footer-strip {
         width: calc(100% - 2rem);
         max-width: none;
         margin-left: auto;
         margin-right: auto;
       }
+
       .why-block { padding: 1.35rem; }
-      .contact-final { padding: 2.3rem 1.4rem; }
+      .footer-strip {
+        flex-wrap: wrap;
+        justify-content: center;
+        text-align: center;
+        padding-left: 1.2rem;
+        padding-right: 1.2rem;
+      }
+      .footer-strip p { width: 100%; text-align: center; }
+
+      .tabs-nav { gap: .4rem; border-bottom: none; }
+      .tab-btn {
+        width: 100%;
+        text-align: left;
+        padding: .8rem 1rem;
+        border: 1px solid var(--line);
+        border-radius: 14px;
+      }
+      .tab-btn::after { display: none; }
+      .tab-content { padding: 2rem 1rem; }
+      .case-shot { display: none; }
+
+      .project-modal-inner,
+      .cv-modal-inner {
+        width: calc(100vw - .75rem);
+        max-width: none;
+        height: calc(100vh - .75rem);
+        padding: .75rem;
+      }
+      .project-html { padding: 0 .15rem; }
+      .project-modal-content,
+      .cv-frame { width: 100%; }
+
+      .project-gallery-grid {
+        display: flex;
+        flex-direction: column;
+        gap: .9rem;
+      }
+      .project-featured {
+        order: -1;
+        width: 100%;
+        min-height: 360px;
+      }
+      .project-featured img {
+        min-height: 360px;
+        max-height: 58vh;
+        object-fit: contain;
+      }
+      .project-thumbs {
+        grid-template-columns: repeat(4, minmax(0,1fr));
+        gap: .45rem;
+      }
+      .project-thumb {
+        border-radius: 12px;
+      }
+
+      .cv-html { padding: .35rem; }
+      .cv-html .sidebar,
+      .cv-html .main { padding: 1rem; }
+      .cv-html .name { font-size: 2.1rem; }
+      .cv-html .experience { grid-template-columns: 1fr; gap: 1rem; }
+      .cv-html .company-meta { width: auto; }
+
       .section-h2 { font-size: clamp(2rem, 10vw, 2.7rem); }
       .section-tag { font-size: 0.78rem; letter-spacing: 0.18em; }
       .section-lead,
@@ -1845,7 +1912,10 @@
       .flow-step p,
       .solution-card p,
       .audit-intro p,
-      .audit-card ul li { font-size: 0.95rem; line-height: 1.7; }
+      .audit-card ul li {
+        font-size: 0.95rem;
+        line-height: 1.7;
+      }
       .mission-card,
       .profile-card,
       .identity-card,
@@ -1859,50 +1929,17 @@
       .contact-final,
       .project-summary-main,
       .project-summary-meta,
-      .project-gallery { padding: 1.35rem; }
+      .project-gallery {
+        padding: 1.35rem;
+      }
       .hero-h1-line { white-space: normal; }
-      .stat { min-width: calc(50% - .5rem); }
       .ref-cover img { height: 132px; }
       .ref-company-badge { flex-wrap: wrap; gap: .45rem .8rem; }
       .ref-period { margin-left: 0; }
-      .tabs-nav { gap: .4rem; border-bottom: none; width: auto; max-width: none; }
-      .tab-btn { width: 100%; text-align: left; padding: .8rem 1rem; border: 1px solid var(--line); border-radius: 14px; }
-      .tab-btn::after { display: none; }
-      .tab-content { padding: 2rem 1rem; }
-      .case-shot img { height: 86px; }
-      .flow-step { padding: 1rem; }
-      .project-thumbs { grid-template-columns: repeat(2, minmax(0,1fr)); }
-      .project-featured,
-      .project-featured img { min-height: 240px; }
-      .project-modal-inner,
-      .cv-modal-inner {
-        width: calc(100vw - 1rem);
-        max-width: none;
-        height: calc(100vh - 1rem);
-        padding: .75rem;
-      }
-      .project-html { padding: 0 .25rem; }
-      .cv-frame,
-      .project-modal-content { width: 100%; }
-      .cv-html { padding: .35rem; }
-      .cv-html .sidebar,
-      .cv-html .main { padding: 1rem; }
-      .cv-html .name { font-size: 2.1rem; }
-      .cv-html .experience { grid-template-columns: 1fr; gap: 1rem; }
-      .cv-html .company-meta { width: auto; }
-      .project-close,
-      .cv-close { top: .15rem; }
-      .footer-strip {
-        flex-wrap: wrap;
-        justify-content: center;
-        text-align: center;
-        padding-left: 1.2rem;
-        padding-right: 1.2rem;
-      }
-      .footer-strip p { width: 100%; text-align: center; }
       .postule-grid { grid-template-columns: 1fr; }
       .postule-image { order: -1; }
-      .identity-tags span { font-size: .78rem; }
+      .project-close,
+      .cv-close { top: .15rem; }
       .plane-anim,
       #cursor,
       #cursor-ring { display: none; }
@@ -2759,7 +2796,6 @@
   </div>
 
   <div class="tab-content active" id="tab0">
-    <div class="case-shot reveal-zoom"><img src="data:image/svg+xml;charset=UTF-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1600 900'%3E%3Cdefs%3E%3ClinearGradient id='gExt' x1='0' x2='1'%3E%3Cstop stop-color='%23071623'/%3E%3Cstop offset='1' stop-color='%23157f87'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='1600' height='900' fill='url(%23gExt)'/%3E%3Ctext x='800' y='450' dominant-baseline='middle' text-anchor='middle' font-family='Arial,sans-serif' font-size='72' font-weight='700' fill='%23eef5fb'%3Eextime.com%3C/text%3E%3C/svg%3E" alt="extime.com"></div>
     <div class="case-intro-box">
       <div class="case-problem reveal-left">
         <h3>La problématique posée</h3>
