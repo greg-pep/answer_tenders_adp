@@ -1186,6 +1186,63 @@
     }
     .project-summary-meta ul { list-style: none; display: grid; gap: .8rem; }
     .project-summary-meta strong { color: #102132; font-weight: 700; }
+
+    body:not(.light-mode) .project-modal-inner,
+    body:not(.light-mode) .cv-modal-inner {
+      background: rgba(7, 21, 35, 0.92);
+      border-color: rgba(143,168,191,.20);
+    }
+    body:not(.light-mode) .project-summary-main,
+    body:not(.light-mode) .project-summary-meta,
+    body:not(.light-mode) .project-gallery {
+      background: rgba(10, 24, 39, 0.92);
+      border-color: rgba(143,168,191,.18);
+      box-shadow: 0 18px 38px rgba(0,0,0,.24);
+    }
+    body:not(.light-mode) .project-summary-main h3,
+    body:not(.light-mode) .project-summary-meta h4,
+    body:not(.light-mode) .project-gallery h4,
+    body:not(.light-mode) #project-modal-title,
+    body:not(.light-mode) #cv-modal-title {
+      color: #6fc2d3;
+    }
+    body:not(.light-mode) .project-summary-main p,
+    body:not(.light-mode) .project-summary-meta p,
+    body:not(.light-mode) .project-summary-meta li,
+    body:not(.light-mode) .modal-title,
+    body:not(.light-mode) .project-modal-content,
+    body:not(.light-mode) .cv-modal-actions {
+      color: #d8e5f0;
+    }
+    body:not(.light-mode) .project-summary-meta strong {
+      color: #ffffff;
+    }
+    body:not(.light-mode) .project-featured {
+      background: rgba(7, 21, 35, 0.96);
+      border-color: rgba(143,168,191,.18);
+    }
+    body:not(.light-mode) .project-featured img {
+      background: rgba(7, 21, 35, 0.96);
+    }
+    body:not(.light-mode) .cv-close,
+    body:not(.light-mode) .project-close {
+      color: #eef5fb;
+      border-color: rgba(143,168,191,.28);
+      background: rgba(12,31,51,.56);
+    }
+    body:not(.light-mode) .cv-html .cv {
+      border-color: rgba(143,168,191,.18);
+    }
+    body:not(.light-mode) .cv-html .sidebar {
+      background: linear-gradient(180deg, #0e2134 0%, #10283e 100%);
+      border-right-color: rgba(143,168,191,.14);
+    }
+    body:not(.light-mode) .cv-html .main {
+      background: linear-gradient(180deg, #ffffff 0%, #fafcfe 100%);
+    }
+    body:not(.light-mode) .cv-html .side-group {
+      border-color: rgba(49, 71, 94, 0.10);
+    }
     .project-gallery { padding: 1.4rem; }
     .project-gallery-grid {
       display: grid;
@@ -1744,14 +1801,111 @@
       .back-to-top { right: 1rem; bottom: 1rem; width: 48px; height: 48px; }
       nav { padding: 0 1rem; }
       .hero-stats { gap: 1rem; }
-      .mission-grid { grid-template-columns: 1fr; }
       .hero-content { padding: 6.8rem 1rem 4rem; }
+      .mission-grid,
+      .profil-grid,
+      .refs-grid,
+      .motiv-grid,
+      .postule-grid,
+      .case-intro-box,
+      .solutions-grid,
+      .audit-grid,
+      .why-cols,
+      .project-summary,
+      .project-gallery-grid,
+      .cv-html .page {
+        grid-template-columns: 1fr;
+      }
+      .flow-steps { flex-direction: column; gap: 1rem; }
+      .flow-arrow { transform: rotate(90deg); justify-content: center; padding: .4rem 0; }
       .section-intro, .refs-intro, .cases-intro, .motiv-intro, .profil-main { padding: 4rem 1rem 2rem; }
-      .refs-grid, .motiv-grid, .postule-grid, .tabs-nav, .tab-content, .contact-final, .motiv-personal, .gold-line, .footer-strip { margin-left: 1rem; margin-right: 1rem; }
-      .why-block { margin-left: 1rem; margin-right: 1rem; }
-      .figma-cta { flex-direction: column; align-items: flex-start; }
+      .refs-grid, .motiv-grid, .tabs-nav, .tab-content, .contact-final, .motiv-personal, .gold-line { margin-left: 1rem; margin-right: 1rem; }
+      .postule-grid,
+      .why-block,
+      .footer-strip {
+        width: calc(100% - 2rem);
+        max-width: none;
+        margin-left: auto;
+        margin-right: auto;
+      }
+      .why-block { padding: 1.35rem; }
       .contact-final { padding: 2.3rem 1.4rem; }
+      .section-h2 { font-size: clamp(2rem, 10vw, 2.7rem); }
+      .section-tag { font-size: 0.78rem; letter-spacing: 0.18em; }
+      .section-lead,
+      .hero-subtitle,
+      .profile-card p,
+      .mission-card p,
+      .ref-desc,
+      .ref-parallel,
+      .postule-text p,
+      .motiv-block p,
+      .case-problem p,
+      .case-meta-val,
+      .flow-step p,
+      .solution-card p,
+      .audit-intro p,
+      .audit-card ul li { font-size: 0.95rem; line-height: 1.7; }
+      .mission-card,
+      .profile-card,
+      .identity-card,
+      .ref-body,
+      .case-problem,
+      .case-meta,
+      .flow-diagram,
+      .solution-card,
+      .audit-card,
+      .postule-text,
+      .contact-final,
+      .project-summary-main,
+      .project-summary-meta,
+      .project-gallery { padding: 1.35rem; }
+      .hero-h1-line { white-space: normal; }
+      .stat { min-width: calc(50% - .5rem); }
+      .ref-cover img { height: 132px; }
+      .ref-company-badge { flex-wrap: wrap; gap: .45rem .8rem; }
+      .ref-period { margin-left: 0; }
+      .tabs-nav { gap: .4rem; border-bottom: none; width: auto; max-width: none; }
+      .tab-btn { width: 100%; text-align: left; padding: .8rem 1rem; border: 1px solid var(--line); border-radius: 14px; }
+      .tab-btn::after { display: none; }
+      .tab-content { padding: 2rem 1rem; }
+      .case-shot img { height: 86px; }
+      .flow-step { padding: 1rem; }
       .project-thumbs { grid-template-columns: repeat(2, minmax(0,1fr)); }
+      .project-featured,
+      .project-featured img { min-height: 240px; }
+      .project-modal-inner,
+      .cv-modal-inner {
+        width: calc(100vw - 1rem);
+        max-width: none;
+        height: calc(100vh - 1rem);
+        padding: .75rem;
+      }
+      .project-html { padding: 0 .25rem; }
+      .cv-frame,
+      .project-modal-content { width: 100%; }
+      .cv-html { padding: .35rem; }
+      .cv-html .sidebar,
+      .cv-html .main { padding: 1rem; }
+      .cv-html .name { font-size: 2.1rem; }
+      .cv-html .experience { grid-template-columns: 1fr; gap: 1rem; }
+      .cv-html .company-meta { width: auto; }
+      .project-close,
+      .cv-close { top: .15rem; }
+      .footer-strip {
+        flex-wrap: wrap;
+        justify-content: center;
+        text-align: center;
+        padding-left: 1.2rem;
+        padding-right: 1.2rem;
+      }
+      .footer-strip p { width: 100%; text-align: center; }
+      .postule-grid { grid-template-columns: 1fr; }
+      .postule-image { order: -1; }
+      .identity-tags span { font-size: .78rem; }
+      .plane-anim,
+      #cursor,
+      #cursor-ring { display: none; }
     }
   </style>
 </head>
@@ -2445,10 +2599,9 @@
     <div class="profil-grid">
       <div class="profile-card reveal-left">
         <h3>Mon profil en quelques mots</h3>
-        <p>J'interviens à l'intersection du design UX/UI, du front-end et du cadrage fonctionnel. Cette double culture me permet d'imaginer des interfaces crédibles, élégantes, utiles et surtout réalisables, en tenant compte autant de l'expérience utilisateur que des contraintes produit et techniques.</p>
-        <p>Au fil de mes missions, j'ai travaillé sur des portails métier, des sites à fort trafic, des interfaces éditoriales, des contextes B2B complexes et des expériences davantage orientées B2C. J'y ai construit une méthode fondée sur la clarté des parcours, la hiérarchisation de l'information, la cohérence graphique, la structuration des composants et la qualité perçue.</p>
-        <p>Concrètement, cela signifie que je peux participer à la découverte, cadrer une intention UX, produire des wireframes et des maquettes, documenter un design system, dialoguer avec les développeurs sur la faisabilité, puis accompagner les ajustements jusqu'à la mise en ligne. Cette capacité à relier plusieurs niveaux du projet est l'un de mes principaux atouts.</p>
-        <p>Sur une mission comme ADP / Extime, je peux apporter à la fois de la vision, de la méthode, de la production concrète, et une attention forte aux interfaces exposées au public : lisibilité, confiance, hiérarchie et continuité entre les environnements du groupe.</p>
+        <p>J’interviens à l’endroit où le design UX/UI, le front-end et le cadrage fonctionnel se rejoignent vraiment. Cette double lecture me permet de concevoir des interfaces à la fois crédibles, utiles et réalisables, sans perdre de vue ni l’expérience utilisateur, ni les contraintes produit et techniques.</p>
+        <p>Au fil de mes missions, j’ai travaillé sur des portails métier, des sites à fort trafic, des interfaces éditoriales et des contextes B2B parfois denses. Cela m’a amené à affiner une méthode centrée sur la clarté des parcours, la hiérarchisation de l’information et la cohérence graphique.</p>
+        <p>Concrètement, je peux cadrer un besoin, produire des wireframes et des maquettes, structurer un design system, échanger avec les développeurs sur la faisabilité puis accompagner les ajustements jusqu’à la mise en ligne. C’est cette continuité qui, je pense, peut être utile sur une mission comme Extime.</p>
         <button class="cv-btn" id="open-cv">Voir le CV</button>
       </div>
 
@@ -2602,8 +2755,7 @@
 
   <div class="tabs-nav reveal-zoom">
     <button class="tab-btn active" onclick="switchTab(0)"><span class="tab-index">01</span> Problématique cadrage</button>
-    <button class="tab-btn" onclick="switchTab(1)"><span class="tab-index">02</span> Audit extime.com</button>
-    <button class="tab-btn" onclick="switchTab(2)"><span class="tab-index">03</span> Audit parisaeroport.fr</button>
+    <button class="tab-btn" onclick="switchTab(1)"><span class="tab-index">02</span> Audit des sites existants</button>
   </div>
 
   <div class="tab-content active" id="tab0">
@@ -2719,7 +2871,6 @@
   </div>
 
   <div class="tab-content" id="tab1">
-    <div class="case-shot reveal-zoom"><img src="data:image/svg+xml;charset=UTF-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1600 900'%3E%3Cdefs%3E%3ClinearGradient id='gAuditExt' x1='0' x2='1'%3E%3Cstop stop-color='%23071623'/%3E%3Cstop offset='1' stop-color='%23157f87'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='1600' height='900' fill='url(%23gAuditExt)'/%3E%3Ctext x='800' y='450' dominant-baseline='middle' text-anchor='middle' font-family='Arial,sans-serif' font-size='72' font-weight='700' fill='%23eef5fb'%3Eextime.com%3C/text%3E%3C/svg%3E" alt="extime.com"></div>
     <div class="audit-intro reveal-left">
       <div class="section-tag">Analyse UX — extime.com</div>
       <p style="font-size:0.92rem;color:var(--muted);line-height:1.85;margin-top:0.8rem;">
@@ -2730,16 +2881,13 @@
     <div class="audit-grid">
       <div class="audit-card reveal-left"><div class="audit-score good">8/10</div><h4>Identité visuelle & branding</h4><ul><li>Charte graphique premium et cohérente</li><li>Photographies de haute qualité</li><li>Typographie élégante, adaptée au luxe</li><li>Couleurs harmonieuses et sobres</li></ul></div>
       <div class="audit-card reveal-zoom reveal-delay-1"><div class="audit-score medium">6/10</div><h4>Navigation & architecture</h4><ul><li>Menu principal clair mais profond</li><li>Filtres produits à améliorer</li><li>Recherche peu mise en avant</li><li>Breadcrumbs absents sur les fiches produit</li></ul></div>
-      <div class="audit-card reveal-right reveal-delay-2"><div class="audit-score weak">5/10</div><h4>Parcours d'achat / Checkout</h4><ul><li>Rupture visuelle au paiement (cf. problématique)</li><li>Pas de stepper de progression visible</li><li>CTA "Valider mon panier" peu mis en valeur</li><li>Manque de réassurance (avis, sécurité)</li></ul></div>
-      <div class="audit-card reveal-left"><div class="audit-score medium">6/10</div><h4>Expérience mobile</h4><ul><li>Responsive fonctionnel mais améliorable</li><li>Images parfois lentes sur mobile</li><li>Zones de touch à agrandir (CTA)</li><li>Menu hamburger peu intuitif</li></ul></div>
+      <div class="audit-card reveal-right reveal-delay-2"><div class="audit-score weak">5/10</div><h4>Parcours d'achat / Checkout</h4><ul><li>Rupture visuelle au paiement</li><li>Pas de stepper de progression visible</li><li>CTA panier encore discret</li><li>Réassurance perfectible au moment clé</li></ul></div>
+      <div class="audit-card reveal-left"><div class="audit-score medium">6/10</div><h4>Expérience mobile</h4><ul><li>Responsive fonctionnel mais améliorable</li><li>Images parfois lentes sur mobile</li><li>Zones de touch à agrandir</li><li>Menu hamburger peu intuitif</li></ul></div>
       <div class="audit-card reveal-zoom reveal-delay-1"><div class="audit-score good">7/10</div><h4>Performance & SEO</h4><ul><li>Core Web Vitals globalement corrects</li><li>Images à optimiser</li><li>Balises meta bien renseignées</li><li>Lazy-loading à étendre</li></ul></div>
       <div class="audit-card reveal-right reveal-delay-2"><div class="audit-score medium">6/10</div><h4>Accessibilité</h4><ul><li>Contrastes insuffisants sur certains textes</li><li>Alt text incomplets sur les images produit</li><li>Focus clavier à améliorer</li><li>ARIA labels partiels sur le formulaire</li></ul></div>
     </div>
-  </div>
 
-  <div class="tab-content" id="tab2">
-    <div class="case-shot reveal-zoom"><img src="data:image/svg+xml;charset=UTF-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1600 900'%3E%3Cdefs%3E%3ClinearGradient id='gAdp' x1='0' x2='1'%3E%3Cstop stop-color='%23071623'/%3E%3Cstop offset='1' stop-color='%231b5f94'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='1600' height='900' fill='url(%23gAdp)'/%3E%3Ctext x='800' y='450' dominant-baseline='middle' text-anchor='middle' font-family='Arial,sans-serif' font-size='72' font-weight='700' fill='%23eef5fb'%3Eparisaeroport.fr%3C/text%3E%3C/svg%3E" alt="parisaeroport.fr"></div>
-    <div class="audit-intro reveal-left">
+    <div class="audit-intro reveal-left" style="margin-top:2.2rem;">
       <div class="section-tag">Analyse UX — parisaeroport.fr</div>
       <p style="font-size:0.92rem;color:var(--muted);line-height:1.85;margin-top:0.8rem;">
         Audit du site institutionnel du Groupe ADP. Parisaeroport.fr couvre un spectre de besoins très large (vols, parking, shopping, services) avec des millions d'utilisateurs aux profils très différents. L'enjeu UX principal est la gestion de la complexité.
@@ -3077,7 +3225,11 @@
 
   function switchTab(i) {
     document.querySelectorAll('.tab-btn').forEach((btn, j) => btn.classList.toggle('active', i === j));
-    document.querySelectorAll('.tab-content').forEach((content, j) => content.classList.toggle('active', i === j));
+    document.querySelectorAll('#p4 .tab-content').forEach((content, j) => {
+      const active = i === j;
+      content.classList.toggle('active', active);
+      content.style.display = active ? 'block' : 'none';
+    });
   }
   window.switchTab = switchTab;
 
