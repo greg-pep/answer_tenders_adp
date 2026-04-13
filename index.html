@@ -3276,26 +3276,31 @@
     <div class="demo-section reveal-right solution-section">
       <div class="demo-section-title">Les solutions proposées</div>
       <div class="case-problem reveal-left" style="margin-bottom:1.4rem;">
-        <h3>Deux pistes de travail plus claires</h3>
+        <h3>Avant tout : la contrainte technique</h3>
         <p>
-          Pour rester fidèle au besoin formulé, je pars du principe qu’il ne faut plus faire sortir l’utilisateur du parcours Extime après la validation du panier. Les deux pistes ci-dessous vont dans ce sens, avec deux niveaux d’intégration différents.
+          La première question à poser n’est pas graphique, mais technique. Si l’utilisateur sort aujourd’hui du parcours au moment du paiement, c’est probablement qu’il existe une contrainte côté module, intégration, sécurité ou hébergement qui empêche de faire exactement ce que l’on voudrait.
+        </p>
+        <p style="margin-top:1rem;">
+          En revanche, si cette contrainte peut être contournée — même partiellement — alors il devient possible de travailler une solution beaucoup plus cohérente côté expérience. J’ai donc retenu deux pistes crédibles, selon le niveau de liberté technique réellement disponible.
         </p>
       </div>
 
       <div class="figma-solutions">
         <div class="figma-solution-card reveal-left recommended">
           <span class="figma-solution-badge">Solution recommandée</span>
-          <img src="assets/images/opti/Figma_solution1.png" alt="Solution 1 dans Figma">
+          <img src="assets/images/opti/Figma_solution2.png" alt="Solution 2 dans Figma">
           <div class="figma-solution-body">
-            <h4>Solution 1 · Page de paiement intégrée à Extime</h4>
-            <p>Après validation du panier, l’utilisateur arrive sur une vraie page de paiement Extime : même en-tête, même repérage, même récapitulatif, avec le module de paiement intégré dans cette page.</p>
+            <h4>Solution 2 · Une page de paiement séparée, mais visuellement raccord</h4>
+            <p>Si la bifurcation vers une autre page reste techniquement obligatoire, il faut au moins éviter l’effet de rupture. L’idée serait de reconnaître que l’utilisateur vient du tunnel Extime, puis d’appliquer un habillage cohérent au module ou à la page de paiement.</p>
+            <p style="margin-top:.65rem;">Même page ou non, l’enjeu reste le même : conserver les bons repères, reprendre les codes visuels du tunnel et limiter au maximum la sensation de sortie du parcours.</p>
           </div>
         </div>
         <div class="figma-solution-card reveal-right">
-          <img src="assets/images/opti/Figma_solution2.png" alt="Solution 2 dans Figma">
+          <img src="assets/images/opti/Figma_solution1.png" alt="Solution 1 dans Figma">
           <div class="figma-solution-body">
-            <h4>Solution 2 · Étape paiement ajoutée au tunnel</h4>
-            <p>Le panier devient la première étape d’un parcours plus continu. Le paiement arrive dans une étape suivante, toujours dans le cadre Extime, avec progression visible et continuité complète du parcours.</p>
+            <h4>Solution 1 · Un tunnel vertical progressif dans une seule page</h4>
+            <p>On peut aussi imaginer un tunnel vertical avec chargement progressif des étapes. Le paiement viendrait alors s’intégrer dans la même page que le panier et les autres validations, ce qui garde l’utilisateur dans un cadre visuel stable.</p>
+            <p style="margin-top:.65rem;">C’est la piste la plus fluide en termes d’expérience. Selon la réalité technique, elle pourrait passer par une intégration directe du module, par exemple via une iframe correctement habillée.</p>
           </div>
         </div>
       </div>
