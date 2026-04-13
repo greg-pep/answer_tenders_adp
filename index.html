@@ -66,37 +66,6 @@
       position: relative;
       isolation: isolate;
     }
-    body::before,
-    body::after {
-      content: '';
-      position: fixed;
-      inset: 0;
-      pointer-events: none;
-      z-index: 0;
-      will-change: transform, opacity, background-position;
-    }
-    body::before {
-      background:
-        url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 2400 1200'%3E%3Cg fill='white'%3E%3Cg opacity='0.26'%3E%3Cellipse cx='210' cy='170' rx='165' ry='46'/%3E%3Cellipse cx='324' cy='136' rx='108' ry='38'/%3E%3Cellipse cx='446' cy='174' rx='138' ry='42'/%3E%3Cellipse cx='1000' cy='260' rx='184' ry='52'/%3E%3Cellipse cx='1128' cy='224' rx='118' ry='39'/%3E%3Cellipse cx='1260' cy='264' rx='150' ry='45'/%3E%3Cellipse cx='1760' cy='186' rx='170' ry='48'/%3E%3Cellipse cx='1874' cy='150' rx='110' ry='38'/%3E%3Cellipse cx='1996' cy='190' rx='142' ry='43'/%3E%3C/g%3E%3Cg opacity='0.18'%3E%3Cellipse cx='170' cy='654' rx='150' ry='42'/%3E%3Cellipse cx='272' cy='622' rx='100' ry='34'/%3E%3Cellipse cx='382' cy='658' rx='128' ry='39'/%3E%3Cellipse cx='1160' cy='744' rx='176' ry='50'/%3E%3Cellipse cx='1284' cy='708' rx='114' ry='37'/%3E%3Cellipse cx='1410' cy='748' rx='144' ry='43'/%3E%3Cellipse cx='1990' cy='676' rx='162' ry='46'/%3E%3Cellipse cx='2100' cy='642' rx='106' ry='35'/%3E%3Cellipse cx='2216' cy='680' rx='134' ry='40'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E") repeat-x 0 0 / 2400px 1200px;
-      opacity: .72;
-      animation: siteCloudsFront 58s linear infinite;
-      filter: blur(2px);
-    }
-    body::after {
-      background:
-        url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 2400 1200'%3E%3Cg fill='white'%3E%3Cg opacity='0.16'%3E%3Cellipse cx='320' cy='346' rx='150' ry='42'/%3E%3Cellipse cx='424' cy='314' rx='96' ry='33'/%3E%3Cellipse cx='532' cy='350' rx='124' ry='38'/%3E%3Cellipse cx='1470' cy='394' rx='166' ry='46'/%3E%3Cellipse cx='1586' cy='360' rx='106' ry='35'/%3E%3Cellipse cx='1704' cy='398' rx='136' ry='41'/%3E%3C/g%3E%3Cg opacity='0.1'%3E%3Cellipse cx='840' cy='860' rx='142' ry='39'/%3E%3Cellipse cx='938' cy='830' rx='92' ry='31'/%3E%3Cellipse cx='1040' cy='864' rx='116' ry='36'/%3E%3Cellipse cx='1936' cy='886' rx='156' ry='43'/%3E%3Cellipse cx='2044' cy='854' rx='100' ry='33'/%3E%3Cellipse cx='2154' cy='890' rx='126' ry='38'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E") repeat-x 0 0 / 2400px 1200px;
-      opacity: .5;
-      animation: siteCloudsBack 96s linear infinite;
-      filter: blur(5px);
-    }
-    body.light-mode::before {
-      opacity: .34;
-      filter: blur(2px) brightness(0.96) saturate(0.88);
-    }
-    body.light-mode::after {
-      opacity: .22;
-      filter: blur(5px) brightness(0.98) saturate(0.9);
-    }
     body > * { position: relative; z-index: 1; }
     @keyframes siteCloudsFront { from { background-position: -2400px 0; } to { background-position: 0 0; } }
     @keyframes siteCloudsBack { from { background-position: -2400px 0; } to { background-position: 0 0; } }
@@ -193,13 +162,28 @@
     }
     nav.scrolling-down.scrolled { backdrop-filter: blur(24px); }
     body.light-mode nav.scrolled { background: rgba(245,248,252,.82); }
-    .nav-left { display: flex; align-items: center; gap: 2rem; }
+    .nav-left {
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      gap: 1.65rem;
+      flex: 1 1 auto;
+      min-width: 0;
+    }
     .nav-logo { font-family: var(--font-display); font-size: 1rem; font-weight: 700; color: var(--white); letter-spacing: 0.01em; }
     .nav-logo span { color: var(--muted); font-size: 0.72rem; font-family: var(--font-mono); display: block; letter-spacing: 0.2em; margin-top: .2rem; }
-    .nav-links { display: flex; gap: 1.3rem; align-items: center; }
+    .nav-links {
+      display: flex;
+      gap: 0.82rem;
+      align-items: center;
+      justify-content: flex-start;
+      flex-wrap: nowrap;
+      flex: 0 0 auto;
+      min-width: 0;
+    }
     .nav-link {
       font-family: var(--font-display);
-      font-size: 0.92rem;
+      font-size: 0.8rem;
       font-weight: 700;
       letter-spacing: -0.01em;
       color: var(--muted);
@@ -209,12 +193,15 @@
       background: none;
       border: none;
       text-align: left;
-      max-width: 220px;
-      line-height: 1.2;
+      width: auto;
+      max-width: none;
+      line-height: 1.18;
       text-transform: none;
       min-height: 1.45em;
       overflow: visible;
       padding: 0;
+      display: block;
+      flex: 0 0 auto;
     }
     .nav-link .nav-hit {
       display: inline-flex;
@@ -223,11 +210,13 @@
       cursor: pointer;
       position: relative;
       white-space: nowrap;
+      width: auto;
       min-height: 1.35em;
     }
     .nav-link .nav-display {
       display: inline-block;
       white-space: nowrap;
+      width: auto;
       will-change: transform, opacity, letter-spacing, filter;
       transition: color .28s ease, opacity .28s ease, transform .28s ease, filter .28s ease;
       pointer-events: none;
@@ -599,7 +588,15 @@
 
     #p2 { background: linear-gradient(180deg, var(--bg-soft), var(--bg)); }
     .profil-main { padding: 4.7rem 5rem 3.2rem; max-width: 1280px; width: 100%; margin: 0 auto; }
-    .profil-grid { display: grid; grid-template-columns: 1.2fr 0.8fr; gap: 2rem; margin-top: 2.1rem; align-items: start; }
+    .profil-grid { display: grid; grid-template-columns: 1.2fr 0.8fr; gap: 2rem; margin-top: 2.1rem; align-items: stretch; }
+    .profil-grid > .profile-card,
+    .profil-grid > .identity-card {
+      height: 100%;
+    }
+    .identity-card {
+      display: flex;
+      flex-direction: column;
+    }
     .profile-card, .identity-card {
       background: var(--panel);
       border: 1px solid var(--line);
@@ -642,11 +639,39 @@
     .identity-card { padding: 2.5rem; }
     .identity-name { font-size: 1.1rem; font-weight: 700; color: var(--white); }
     .identity-role { margin-top: .45rem; font-size: .72rem; letter-spacing: .18em; text-transform: uppercase; color: var(--blue-2); font-weight: 700; }
-    .identity-contact { margin-top: 1.5rem; display: grid; gap: .7rem; color: var(--muted); font-size: .95rem; }
-    .identity-contact div { position: relative; padding-left: 1rem; line-height: 1.6; }
+    .identity-contact { margin-top: 1.5rem; display: grid; gap: .95rem; color: var(--muted); font-size: .95rem; }
+    .identity-contact div {
+      position: relative;
+      padding-left: 1rem;
+      line-height: 1.35;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: .18rem;
+    }
+    .identity-contact strong {
+      display: block;
+      width: 100%;
+      margin-bottom: .05rem;
+      white-space: nowrap;
+    }
+    .identity-contact a {
+      display: inline-block;
+      width: auto;
+      max-width: 100%;
+      word-break: break-word;
+      align-self: flex-start;
+    }
+    .identity-card .identity-blocks {
+      margin-top: 1.2rem;
+      display: grid;
+      gap: .8rem;
+      flex: 1 1 auto;
+      align-content: start;
+    }
     .identity-contact div::before { content: '•'; position: absolute; left: 0; top: 0; color: var(--blue-2); font-weight: 700; }
     .identity-contact strong { font-weight: 700; color: var(--white); }
-    .identity-contact a { color: var(--muted); position: relative; display: inline-block; transition: color .25s ease, transform .25s ease; }
+    .identity-contact a { color: var(--muted); position: relative; display: inline-block; width: auto; max-width: 100%; align-self: flex-start; transition: color .25s ease, transform .25s ease; }
     .identity-contact a::after {
       content: '';
       position: absolute;
@@ -663,10 +688,129 @@
     .identity-contact a:hover { color: var(--blue-2); transform: translateX(2px); }
     .identity-contact a:hover::after { transform: scaleX(1); }
     body.light-mode .identity-contact strong { color: #102132; }
-    .identity-block { margin-top: 2rem; }
-    .identity-label { margin-bottom: .75rem; font-size: .72rem; letter-spacing: .16em; text-transform: uppercase; color: var(--blue-2); font-weight: 700; }
-    .identity-tags { display: flex; flex-wrap: wrap; gap: .55rem; }
-    .identity-tags span { display: inline-block; border: 1px solid var(--line); border-radius: 999px; padding: .35rem .8rem; font-size: .74rem; color: var(--muted); }
+    .identity-block {
+      border: 1px solid rgba(64, 111, 156, 0.12);
+      border-radius: 18px;
+      background: rgba(255,255,255,0.03);
+      overflow: hidden;
+      transition: border-color .28s ease, background .28s ease, box-shadow .28s ease;
+    }
+    .identity-block:hover {
+      border-color: rgba(64, 111, 156, 0.22);
+    }
+    .identity-acc-btn {
+      width: 100%;
+      display: block;
+      padding: .82rem 1rem .9rem;
+      border: none;
+      background: transparent;
+      color: inherit;
+      text-align: left;
+      cursor: default;
+    }
+    .identity-acc-left {
+      display: block;
+      min-width: 0;
+    }
+    .identity-label {
+      display: block;
+      margin-bottom: .78rem;
+      font-size: .72rem;
+      letter-spacing: .16em;
+      text-transform: uppercase;
+      color: var(--blue-2);
+      font-weight: 700;
+    }
+    .identity-carousel {
+      position: relative;
+      display: grid;
+      grid-template-columns: 28px minmax(0, 1fr) 28px;
+      align-items: center;
+      gap: .45rem;
+      min-width: 0;
+      width: 100%;
+      margin-left: 0;
+      padding-left: 0;
+    }
+    .identity-carousel-track {
+      display: block;
+      overflow-x: auto;
+      touch-action: pan-x;
+      -webkit-overflow-scrolling: touch;
+      overflow-y: hidden;
+      scroll-behavior: auto;
+      scrollbar-width: none;
+      -ms-overflow-style: none;
+      min-width: 0;
+      width: 100%;
+      white-space: nowrap;
+      margin-left: 0;
+      padding-left: 0;
+      justify-self: start;
+    }
+    .identity-carousel-track::-webkit-scrollbar {
+      display: none;
+    }
+    .identity-tags {
+      display: inline-flex;
+      flex-wrap: nowrap;
+      gap: .5rem;
+      align-items: center;
+      justify-content: flex-start;
+      min-width: max-content;
+    }
+    .identity-tags span {
+      display: inline-flex;
+      align-items: center;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      padding: .35rem .8rem;
+      font-size: .74rem;
+      color: var(--muted);
+      white-space: nowrap;
+      flex: 0 0 auto;
+    }
+    .identity-carousel-btn {
+      width: 28px;
+      height: 28px;
+      min-width: 28px;
+      border-radius: 999px;
+      border: 1px solid rgba(64,111,156,0.2);
+      background: rgba(255,255,255,0.96);
+      color: var(--blue-2);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1rem;
+      line-height: 1;
+      cursor: pointer;
+      transition: transform .2s ease, box-shadow .2s ease, opacity .2s ease, border-color .2s ease, background .2s ease, color .2s ease;
+      box-shadow: 0 3px 8px rgba(19,56,92,.08);
+      opacity: 1;
+      pointer-events: auto;
+    }
+    .identity-carousel-btn.is-disabled {
+      opacity: .68;
+      pointer-events: none;
+      box-shadow: none;
+      border-color: rgba(64,111,156,0.16);
+      background: rgba(217,224,231,0.88);
+      color: rgba(93,116,140,0.95);
+      filter: grayscale(1);
+    }
+    .identity-carousel-btn.is-visible {
+      opacity: 1;
+      pointer-events: auto;
+    }
+    .identity-carousel-btn:hover {
+      transform: scale(1.06);
+      box-shadow: 0 8px 18px rgba(19,56,92,.12);
+      border-color: rgba(50,125,177,0.34);
+    }
+    body:not(.light-mode) .identity-carousel-btn {
+      background: #fff;
+      color: #1b5f94;
+    }
 
     .cv-modal {
       position: fixed; inset: 0; z-index: 1200; display: none; align-items: center; justify-content: center;
@@ -999,6 +1143,7 @@
       margin: 0 auto;
       max-width: calc(1280px - 10rem);
       width: calc(100% - 10rem);
+      padding-bottom: 3rem;
     }
     .ref-card {
       will-change: transform;
@@ -1379,6 +1524,240 @@
       to { opacity: 1; transform: translateY(0) scale(1); }
     }
     .case-intro-box { display: grid; grid-template-columns: 2fr 1fr; gap: 2rem; margin-bottom: 3rem; }
+    .demo-section {
+      border: 1px solid var(--line);
+      border-radius: 30px;
+      background: var(--panel);
+      box-shadow: var(--shadow);
+      padding: 2rem;
+      margin-bottom: 2rem;
+      overflow: hidden;
+    }
+    .demo-section-title {
+      display: flex;
+      align-items: center;
+      gap: .8rem;
+      margin-bottom: 1.25rem;
+      font-family: var(--font-display);
+      font-size: 1.45rem;
+      font-weight: 700;
+      color: #7f92a6;
+      letter-spacing: -0.02em;
+    }
+    .problem-main-section > .demo-section-title::before,
+    #tab1 .demo-section-title::before {
+      content: '';
+      width: 36px;
+      height: 2px;
+      background: linear-gradient(90deg, var(--teal), var(--blue-2));
+      border-radius: 999px;
+      flex: 0 0 auto;
+    }
+    .problem-main-section > .demo-section-title::before,
+    .solution-section .demo-section-title::before,
+    #tab1 .demo-section-title::before {
+      display: none;
+    }
+    .problem-main-section .case-intro-box {
+      grid-template-columns: 3fr 1fr !important;
+    }
+    .problem-main-section .problem-reading-row {
+      grid-template-columns: 1fr !important;
+    }
+    .problem-main-section .problem-parcours-row {
+      grid-template-columns: 1fr !important;
+    }
+    .problem-main-section .case-problem h3,
+    .problem-main-section .flow-diagram h3,
+    .problem-main-section .project-summary-meta h4,
+    .solution-section .case-problem h3,
+    .solution-section .figma-solution-body h4 {
+      font-size: 1rem;
+      font-weight: 600;
+      letter-spacing: -0.01em;
+      margin-bottom: .85rem;
+      font-family: var(--font-display);
+    }
+    .problem-main-section .case-problem h3,
+    .solution-section .case-problem h3,
+    .solution-section .figma-solution-body h4 {
+      color: var(--blue-2);
+    }
+    .problem-main-section .flow-diagram h3,
+    .problem-main-section .project-summary-meta h4 {
+      color: #102132 !important;
+      font-family: var(--font-display);
+      letter-spacing: -0.01em;
+      text-transform: none;
+      font-weight: 600;
+    }
+    .problem-main-section .project-summary-meta {
+      background: #ffffff;
+      border: 1px solid rgba(64, 111, 156, 0.14);
+      border-radius: 24px;
+      box-shadow: 0 14px 34px rgba(0,0,0,.08);
+    }
+    .problem-main-section .project-summary-meta ul {
+      gap: .7rem !important;
+    }
+    .problem-main-section .project-summary-meta li,
+    .problem-main-section .flow-step p,
+    .solution-section .figma-solution-body p {
+      font-size: .84rem;
+      line-height: 1.5;
+      color: #4d6277;
+      font-family: var(--font-body);
+    }
+    .problem-main-section .project-summary-meta strong {
+      font-family: var(--font-mono);
+      font-size: .72rem;
+      color: var(--blue-2);
+      font-weight: 400;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      display: inline-block;
+      margin-right: .2rem;
+    }
+    .problem-main-section .project-summary-meta strong,
+    .problem-main-section .flow-step-title {
+      font-size: 1rem;
+      margin: .45rem 0;
+    }
+    .problem-main-section .flow-step p {
+      font-size: .8rem;
+      line-height: 1.42;
+    }
+    .problem-main-section .flow-step {
+      padding: .9rem .95rem 1rem;
+    }
+    .problem-main-section .flow-diagram {
+      padding: 1.7rem;
+    }
+    .problem-main-section .project-summary-meta {
+      padding: 1.55rem 1.45rem !important;
+    }
+    .demo-section-title::before {
+      content: '';
+      width: 36px;
+      height: 2px;
+      background: linear-gradient(90deg, var(--teal), var(--blue-2));
+      border-radius: 999px;
+      flex: 0 0 auto;
+    }
+    .demo-section.solution-section .demo-section-title::before {
+      display: none;
+    }
+    .demo-hero-image {
+      width: 100%;
+      border-radius: 22px;
+      overflow: hidden;
+      border: 1px solid rgba(64,111,156,0.12);
+      margin-bottom: 1.35rem;
+      background: rgba(255,255,255,0.04);
+    }
+    .demo-hero-image img {
+      width: 100%;
+      height: 250px;
+      object-fit: cover;
+      object-position: top center;
+    }
+    .problem-visuals {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0,1fr));
+      gap: 1rem;
+      margin-bottom: 1.35rem;
+    }
+    .problem-visual {
+      border: 1px solid rgba(64,111,156,0.14);
+      border-radius: 22px;
+      overflow: hidden;
+      background: rgba(255,255,255,0.04);
+    }
+    .problem-visual img {
+      width: 100%;
+      height: 260px;
+      object-fit: contain;
+      background: rgba(255,255,255,0.94);
+      padding: .5rem;
+    }
+    .figma-solutions {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0,1fr));
+      gap: 1rem;
+      margin-top: 1.5rem;
+    }
+    .figma-solution-card {
+      position: relative;
+      border: 1px solid rgba(64,111,156,0.14);
+      border-radius: 24px;
+      background: rgba(255,255,255,0.04);
+      overflow: hidden;
+      transition: transform .25s ease, border-color .25s ease, box-shadow .25s ease;
+    }
+    .figma-solution-card.recommended {
+      border-width: 3px;
+      border-color: rgba(39,164,168,.42);
+      box-shadow: 0 0 0 1px rgba(39,164,168,.12), 0 14px 30px rgba(0,0,0,.12);
+    }
+    .figma-solution-badge {
+      position: absolute;
+      top: 0;
+      right: 1rem;
+      background: #8de2c5;
+      color: #0c4b4d;
+      font-family: var(--font-mono);
+      font-size: .62rem;
+      letter-spacing: .12em;
+      padding: .38rem .72rem;
+      border-radius: 0 0 10px 10px;
+      font-weight: 700;
+      z-index: 2;
+    }
+    .figma-solution-card:hover {
+      transform: translateY(-2px);
+      border-color: rgba(39,164,168,.26);
+      box-shadow: 0 14px 30px rgba(0,0,0,.12);
+    }
+    .figma-solution-card img {
+      width: 100%;
+      height: 240px;
+      object-fit: contain;
+      background: rgba(255,255,255,0.96);
+      padding: .5rem;
+    }
+    .figma-solution-body {
+      padding: 1rem 1rem 1.1rem;
+    }
+    .figma-solution-body h4 {
+      font-size: 1rem;
+      color: var(--white);
+      margin-bottom: .45rem;
+      font-weight: 700;
+    }
+    .figma-solution-body p {
+      font-size: .88rem;
+      color: var(--muted);
+      line-height: 1.65;
+    }
+    .figma-link {
+      margin-top: 1.35rem;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid var(--blue-2);
+      border-radius: 999px;
+      padding: .82rem 1.15rem;
+      color: var(--blue-2);
+      font-size: .72rem;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      font-weight: 700;
+      transition: all .25s ease;
+    }
+    .figma-link:hover {
+      background: var(--blue-2);
+      color: #fff;
+    }
     .case-problem, .case-meta, .flow-diagram, .audit-intro, .audit-card, .case-shot {
       background: var(--panel);
       border: 1px solid var(--line);
@@ -1588,40 +1967,6 @@
       isolation: isolate;
     }
     body.light-mode .motiv-personal { background: linear-gradient(135deg, rgba(255,255,255,.95), rgba(238,244,251,.95)); }
-    .motiv-personal::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      pointer-events: none;
-      z-index: 0;
-      background-image:
-        url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 420'%3E%3Cg fill='white' fill-opacity='0.06'%3E%3Cellipse cx='130' cy='110' rx='92' ry='28'/%3E%3Cellipse cx='185' cy='95' rx='64' ry='24'/%3E%3Cellipse cx='238' cy='112' rx='78' ry='26'/%3E%3Cellipse cx='492' cy='168' rx='102' ry='30'/%3E%3Cellipse cx='560' cy='150' rx='72' ry='25'/%3E%3Cellipse cx='622' cy='170' rx='86' ry='28'/%3E%3Cellipse cx='880' cy='110' rx='96' ry='29'/%3E%3Cellipse cx='940' cy='92' rx='66' ry='24'/%3E%3Cellipse cx='1002' cy='112' rx='80' ry='27'/%3E%3C/g%3E%3C/svg%3E"),
-        url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 420'%3E%3Cg fill='white' fill-opacity='0.04'%3E%3Cellipse cx='90' cy='292' rx='86' ry='24'/%3E%3Cellipse cx='145' cy='278' rx='58' ry='20'/%3E%3Cellipse cx='195' cy='294' rx='72' ry='23'/%3E%3Cellipse cx='620' cy='260' rx='96' ry='28'/%3E%3Cellipse cx='682' cy='244' rx='68' ry='23'/%3E%3Cellipse cx='744' cy='262' rx='82' ry='26'/%3E%3Cellipse cx='1030' cy='304' rx='88' ry='25'/%3E%3Cellipse cx='1086' cy='288' rx='60' ry='21'/%3E%3Cellipse cx='1140' cy='304' rx='74' ry='24'/%3E%3C/g%3E%3C/svg%3E");
-      background-repeat: repeat-x, repeat-x;
-      background-size: 1200px 420px, 1200px 420px;
-      background-position: 0 0, -220px 10px;
-      animation: motivCloudsFront 85s linear infinite, motivCloudsBack 120s linear infinite;
-      opacity: 1;
-      mix-blend-mode: screen;
-    }
-    .motiv-personal::after {
-      content: '';
-      position: absolute;
-      inset: 0;
-      pointer-events: none;
-      z-index: 0;
-      background: linear-gradient(180deg, rgba(255,255,255,0.025), rgba(255,255,255,0));
-      opacity: 0.55;
-    }
-    body.light-mode .motiv-personal::before { filter: saturate(0.95) brightness(1.02); }
-    @keyframes motivCloudsFront {
-      from { background-position: 0 0, -220px 10px; }
-      to { background-position: 1200px 0, 980px 10px; }
-    }
-    @keyframes motivCloudsBack {
-      from { background-position: 0 0, -220px 10px; }
-      to { background-position: 900px 0, 680px 10px; }
-    }
     .motiv-personal > * { position: relative; z-index: 1; }
     .motiv-personal h3 {
       font-family: var(--font-display);
@@ -1776,8 +2121,8 @@
     .motiv-intro { padding-top: 4rem; padding-bottom: 2.2rem; }
 
     @media (max-width: 1200px) {
-      .nav-links { gap: .9rem; }
-      .nav-link { max-width: 170px; font-size: .82rem; }
+      .nav-links { gap: .45rem; }
+      .nav-link { font-size: .75rem; }
       .hero-content { padding-left: 3.2rem; padding-right: 3.2rem; }
       .section-intro, .refs-intro, .cases-intro, .motiv-intro, .profil-main { padding-left: 3rem; padding-right: 3rem; }
       .refs-grid, .motiv-grid, .postule-grid, .tabs-nav, .tab-content, .contact-final, .motiv-personal, .gold-line, .footer-strip { margin-left: 3rem; margin-right: 3rem; }
@@ -1813,7 +2158,9 @@
       .audit-grid,
       .why-cols,
       .project-summary,
-      .cv-html .page {
+      .cv-html .page,
+      .problem-visuals,
+      .figma-solutions {
         grid-template-columns: 1fr;
       }
 
@@ -1855,6 +2202,10 @@
       .tab-btn::after { display: none; }
       .tab-content { padding: 2rem 1rem; }
       .case-shot { display: none; }
+      .demo-section { padding: 1.2rem; }
+      .demo-hero-image img,
+      .problem-visual img,
+      .figma-solution-card img { height: auto; max-height: 280px; }
 
       .project-modal-inner,
       .cv-modal-inner {
@@ -1938,6 +2289,7 @@
       .ref-period { margin-left: 0; }
       .postule-grid { grid-template-columns: 1fr; }
       .postule-image { order: -1; }
+      .identity-preview { font-size: .76rem; }
       .project-close,
       .cv-close { top: .15rem; }
       .plane-anim,
@@ -1967,7 +2319,7 @@
       <button class="nav-link active" data-target="p1" data-base="Pourquoi ce site ?" data-alt="La mission"><span class="nav-hit"><span class="nav-display">Pourquoi ce site ?</span></span></button>
       <button class="nav-link" data-target="p2" data-base="Qui suis-je ?" data-alt="Mon profil"><span class="nav-hit"><span class="nav-display">Qui suis-je ?</span></span></button>
       <button class="nav-link" data-target="p3" data-base="Avec qui j'ai travaillé ?" data-alt="Mes références"><span class="nav-hit"><span class="nav-display">Avec qui j'ai travaillé ?</span></span></button>
-      <button class="nav-link" data-target="p4" data-base="Comment je peux vous aider ?" data-alt="Cas d'études"><span class="nav-hit"><span class="nav-display">Comment je peux vous aider ?</span></span></button>
+      <button class="nav-link" data-target="p4" data-base="Que puis je faire ?" data-alt="Cas d'études"><span class="nav-hit"><span class="nav-display">Que puis je faire ?</span></span></button>
       <button class="nav-link" data-target="p5" data-base="Pourquoi je postule ?" data-alt="Mes motivations"><span class="nav-hit"><span class="nav-display">Pourquoi je postule ?</span></span></button>
     </div>
   </div>
@@ -2550,7 +2902,7 @@
       <span class="hero-h1-line splitflap space-gap" data-flap-text="qui décolle"></span>
     </h1>
     <p class="hero-subtitle reveal">
-      Répondre à l'appel d'offre du Groupe ADP pour une mission UX/UI freelance sur extime.com — avec méthode, expertise, et une véritable passion pour ce secteur.
+      J’ai préféré répondre à cette mission avec un mini site plutôt qu’avec un PDF classique. C’est une façon plus directe de montrer comment je structure un contenu, hiérarchise une information et mets en scène un sujet sans l’alourdir.
     </p>
     <div class="hero-stats reveal-zoom">
       <div class="stat"><div class="stat-num">15+</div><div class="stat-label">Années d'expérience</div></div>
@@ -2567,29 +2919,29 @@
       <h2 class="section-h2">Une mission sur mesure,<br><em>un profil qui colle.</em></h2>
     </div>
     <p class="section-lead reveal-left reveal-delay-2">
-      La NxTDF (Digital Factory d'ADP) recherche un Expert UX/UI Designer pour intervenir principalement sur extime.com — boutique officielle de Paris Aéroport. Une mission de conception, conseil et maintenance graphique, en lien direct avec les équipes métier et développement.
+      La NxTDF cherche un profil capable de concevoir, cadrer, faire avancer et garder une cohérence graphique dans le temps sur Extime. C’est exactement le type de mission dans lequel je me sens le plus utile : un sujet concret, visible, avec de vrais échanges entre métier, produit et développement.
     </p>
 
     <div class="mission-grid">
       <div class="mission-card reveal-left">
         <span class="mission-icon"><i class="las la-pencil-ruler" aria-hidden="true"></i></span>
         <h3>Réalisations graphiques</h3>
-        <p>Wireframes (FigJam), maquettes haute fidélité, user flows — conception soignée depuis l'expression du besoin jusqu'aux specs techniques pour les devs.</p>
+        <p>Wireframes, maquettes, parcours, variantes d’interface : l’idée est d’aller d’un besoin parfois flou vers quelque chose de clair, partageable et exploitable par les équipes de développement.</p>
       </div>
       <div class="mission-card reveal-right reveal-delay-1">
         <span class="mission-icon"><i class="las la-route" aria-hidden="true"></i></span>
         <h3>Études & parcours utilisateurs</h3>
-        <p>Analyse des friction points, conduite d'ateliers, amélioration continue des parcours sur extime.com, Paris Aéroport et l'application mobile.</p>
+        <p>Repérage des points de friction, ateliers de travail, arbitrages et ajustements : tout ce qui permet de rendre les parcours plus fluides sans casser l’existant ni perdre les équipes en route.</p>
       </div>
       <div class="mission-card reveal-left reveal-delay-2">
         <span class="mission-icon"><i class="las la-layer-group" aria-hidden="true"></i></span>
         <h3>UI Kit & Design system</h3>
-        <p>Mise en place et maintien d'un UI Kit Figma en collaboration avec les leads dev. Transfert des assets Zeplin, gestion des bibliothèques d'icônes.</p>
+        <p>Mise en place et entretien d’un UI Kit Figma vraiment utile au quotidien, en lien avec les développeurs, pour éviter les écarts, gagner du temps et faire vivre une base commune propre.</p>
       </div>
       <div class="mission-card reveal-right reveal-delay-3">
         <span class="mission-icon"><i class="las la-lightbulb" aria-hidden="true"></i></span>
         <h3>Conseil & bonnes pratiques</h3>
-        <p>Assistance UX/UI aux équipes, rédaction des spécifications fonctionnelles graphiques, reporting régulier avec le métier et la DSIDF.</p>
+        <p>J’aime aussi le rôle plus transversal : aider les équipes à trancher, formaliser ce qui doit l’être, et garder une ligne lisible entre l’intention de départ et ce qui finit réellement à l’écran.</p>
       </div>
     </div>
   </div>
@@ -2610,12 +2962,12 @@
       <div class="why-col">
         <h3>Ce que j'apporte</h3>
         <ul class="why-list">
-          <li>15 ans d'expérience UX/UI + dev front polyvalent</li>
-          <li>Missions chez Coface, Société Générale, 20 Minutes, Le Point</li>
-          <li>Figma : wireframes, maquettes, DS complets, prototypes animés</li>
-          <li>Habitude du travail en équipe Agile, remote ou présentiel</li>
-          <li>Disponible pour le 05/05/2026</li>
-          <li>Approche centrée utilisateur + data-driven</li>
+          <li>Une expérience longue entre design d’interface et front-end</li>
+          <li>Des missions menées dans des contextes exigeants et très variés</li>
+          <li>Une pratique quotidienne de Figma, du wireframe au prototype</li>
+          <li>Une façon de travailler fluide avec produit, métier et technique</li>
+          <li>Une disponibilité en phase avec votre calendrier</li>
+          <li>Une approche concrète, structurée, avec le souci du détail utile</li>
         </ul>
       </div>
     </div>
@@ -2630,15 +2982,15 @@
       <h2 class="section-h2">15 ans à concevoir<br><em>des interfaces qui comptent.</em></h2>
     </div>
     <p class="section-lead reveal-left reveal-delay-2" style="margin-bottom: 2.4rem; max-width: 820px;">
-      Designer conscient des contraintes techniques, développeur attentif à l'expérience utilisateur. Du cadrage au delivery, de la recherche UX à l'intégration front.
+      Mon point fort, c’est ce passage assez naturel entre cadrage UX, design d’interface et réalité de l’intégration. J’aime les projets où il faut autant penser juste que produire proprement.
     </p>
 
     <div class="profil-grid">
       <div class="profile-card reveal-left">
         <h3>Mon profil en quelques mots</h3>
-        <p>J’interviens à l’endroit où le design UX/UI, le front-end et le cadrage fonctionnel se rejoignent vraiment. Cette double lecture me permet de concevoir des interfaces à la fois crédibles, utiles et réalisables, sans perdre de vue ni l’expérience utilisateur, ni les contraintes produit et techniques.</p>
-        <p>Au fil de mes missions, j’ai travaillé sur des portails métier, des sites à fort trafic, des interfaces éditoriales et des contextes B2B parfois denses. Cela m’a amené à affiner une méthode centrée sur la clarté des parcours, la hiérarchisation de l’information et la cohérence graphique.</p>
-        <p>Concrètement, je peux cadrer un besoin, produire des wireframes et des maquettes, structurer un design system, échanger avec les développeurs sur la faisabilité puis accompagner les ajustements jusqu’à la mise en ligne. C’est cette continuité qui, je pense, peut être utile sur une mission comme Extime.</p>
+        <p>Je travaille à l’endroit où le design, le produit et le front se croisent vraiment. Cela m’aide à proposer des interfaces qui tiennent visuellement, fonctionnellement et techniquement, sans vendre des intentions impossibles à faire vivre ensuite.</p>
+        <p>J’ai surtout évolué dans des contextes où il fallait simplifier sans appauvrir : portails métier, sites à fort trafic, interfaces éditoriales, environnements B2B denses ou parcours plus orientés conversion. Avec le temps, j’ai appris à repérer vite ce qui gêne, ce qui rassure et ce qui mérite d’être rendu plus clair.</p>
+        <p>Concrètement, je peux cadrer un besoin, produire des wireframes et des maquettes, structurer un design system, échanger avec les développeurs sur la faisabilité puis accompagner les ajustements jusqu’à la mise en ligne. C’est cette continuité, très opérationnelle, que je peux apporter sur une mission comme Extime.</p>
         <button class="cv-btn" id="open-cv">Voir le CV</button>
       </div>
 
@@ -2653,34 +3005,90 @@
           <div><strong>Portfolio :</strong> <a href="https://www.liven-studio.fr" target="_blank" rel="noreferrer">liven-studio.fr</a></div>
         </div>
 
-        <div class="identity-block">
-          <div class="identity-label">Outils UX/UI</div>
-          <div class="identity-tags">
-            <span>Figma</span><span>FigJam</span><span>Adobe XD</span><span>Balsamiq</span><span>Axure</span><span>Sketch</span><span>Zeplin</span>
+        <div class="identity-blocks">
+          <div class="identity-block">
+            <div class="identity-acc-btn">
+              <div class="identity-acc-left">
+                <span class="identity-label">Outils UX/UI</span>
+                <div class="identity-carousel">
+                  <button class="identity-carousel-btn identity-carousel-prev" type="button" aria-label="Voir à gauche">‹</button>
+                  <div class="identity-carousel-track">
+                    <div class="identity-tags">
+                      <span>Figma</span><span>FigJam</span><span>Adobe XD</span><span>Balsamiq</span><span>Axure</span><span>Sketch</span><span>Zeplin</span>
+                    </div>
+                  </div>
+                  <button class="identity-carousel-btn identity-carousel-next" type="button" aria-label="Voir à droite">›</button>
+                </div>
+              </div>
+            </div>
           </div>
-        </div>
-        <div class="identity-block">
-          <div class="identity-label">Analyse UX</div>
-          <div class="identity-tags">
-            <span>Contentsquare</span><span>Hotjar</span><span>Adobe Target</span><span>Tests A/B</span><span>Analytics</span>
+
+          <div class="identity-block">
+            <div class="identity-acc-btn">
+              <div class="identity-acc-left">
+                <span class="identity-label">Analyse UX</span>
+                <div class="identity-carousel">
+                  <button class="identity-carousel-btn identity-carousel-prev" type="button" aria-label="Voir à gauche">‹</button>
+                  <div class="identity-carousel-track">
+                    <div class="identity-tags">
+                      <span>Contentsquare</span><span>Hotjar</span><span>Adobe Target</span><span>Tests A/B</span><span>Analytics</span>
+                    </div>
+                  </div>
+                  <button class="identity-carousel-btn identity-carousel-next" type="button" aria-label="Voir à droite">›</button>
+                </div>
+              </div>
+            </div>
           </div>
-        </div>
-        <div class="identity-block">
-          <div class="identity-label">Front-end</div>
-          <div class="identity-tags">
-            <span>HTML5 / CSS3</span><span>JavaScript</span><span>React</span><span>PHP / Twig</span><span>Sass / Less</span><span>WordPress</span>
+
+          <div class="identity-block">
+            <div class="identity-acc-btn">
+              <div class="identity-acc-left">
+                <span class="identity-label">Front-end</span>
+                <div class="identity-carousel">
+                  <button class="identity-carousel-btn identity-carousel-prev" type="button" aria-label="Voir à gauche">‹</button>
+                  <div class="identity-carousel-track">
+                    <div class="identity-tags">
+                      <span>HTML5 / CSS3</span><span>JavaScript</span><span>React</span><span>PHP / Twig</span><span>Sass / Less</span><span>WordPress</span>
+                    </div>
+                  </div>
+                  <button class="identity-carousel-btn identity-carousel-next" type="button" aria-label="Voir à droite">›</button>
+                </div>
+              </div>
+            </div>
           </div>
-        </div>
-        <div class="identity-block">
-          <div class="identity-label">Méthodes</div>
-          <div class="identity-tags">
-            <span>Agile</span><span>Design Thinking</span><span>Atomic Design</span><span>Design System</span>
+
+          <div class="identity-block">
+            <div class="identity-acc-btn">
+              <div class="identity-acc-left">
+                <span class="identity-label">Méthodes</span>
+                <div class="identity-carousel">
+                  <button class="identity-carousel-btn identity-carousel-prev" type="button" aria-label="Voir à gauche">‹</button>
+                  <div class="identity-carousel-track">
+                    <div class="identity-tags">
+                      <span>Agile</span><span>Design Thinking</span><span>Atomic Design</span><span>Design System</span>
+                    </div>
+                  </div>
+                  <button class="identity-carousel-btn identity-carousel-next" type="button" aria-label="Voir à droite">›</button>
+                </div>
+              </div>
+            </div>
           </div>
-        </div>
-        <div class="identity-block">
-          <div class="identity-label">Certifications</div>
-          <div class="identity-tags">
-            <span>icPO — Product Owner</span><span>icSM — Scrum Master</span><span>icSTD — Scrum Team Dev</span>
+
+          <div class="identity-block">
+            <div class="identity-acc-btn">
+              <div class="identity-acc-left">
+                <span class="identity-label">Certifications</span>
+                <div class="identity-carousel">
+                  <button class="identity-carousel-btn identity-carousel-prev" type="button" aria-label="Voir à gauche">‹</button>
+                  <div class="identity-carousel-track">
+                    <div class="identity-tags">
+                      <span>icPO — Product Owner</span><span>icSM — Scrum Master</span><span>icSTD — Scrum Team Dev</span>
+                    </div>
+                  </div>
+                  <button class="identity-carousel-btn identity-carousel-next" type="button" aria-label="Voir à droite">›</button>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -2696,10 +3104,10 @@
       <h2 class="section-h2">Des contextes variés,<br><em>des enjeux similaires.</em></h2>
     </div>
     <p class="section-lead reveal-left reveal-delay-2" style="max-width: 100%;">
-      Au fil de mes missions, j’ai travaillé sur des projets présentant plusieurs problématiques proches de celles d’Extime : e-commerce, tunnels critiques, identité de marque forte, forts volumes de trafic, parcours sensibles ou enjeux de fidélisation.
+      Plutôt que d’empiler des logos, j’ai retenu ici quelques projets qui racontent quelque chose d’utile pour Extime : commerce en ligne, parcours délicats, image de marque forte, trafic important, fidélisation ou interfaces qui doivent rester lisibles malgré leur densité.
     </p>
     <p class="section-lead reveal-left reveal-delay-3" style="margin-top:1rem; max-width: 100%;">
-      J’ai donc sélectionné ici quelques projets passés qui me semblent les plus pertinents pour mettre en évidence ces proximités, expliquer les parallèles avec Extime et montrer la nature concrète du travail UX/UI mené sur chacun d’eux.
+      Le but n’est pas de dire que tout se ressemble, mais de montrer que certaines mécaniques reviennent souvent — et que je les ai déjà traitées dans des contextes différents, avec des réponses adaptées à chaque fois.
     </p>
   </div>
 
@@ -2710,8 +3118,8 @@
         <div class="ref-company-badge"><div class="ref-dot"></div><div class="ref-company-name">Ben Simon</div><div class="ref-period">E-commerce</div></div>
         <h3>Site e-commerce mode & tunnel d'achat</h3>
         <div class="ref-sector">Retail · Branding · Conversion</div>
-        <p class="ref-desc">Travail autour d'un site marchand avec forte dimension de marque, hiérarchie produit, pages catalogues et logique de conversion. Le sujet touche directement à la mise en confiance, à la lisibilité de l'offre et à la fluidité du tunnel.</p>
-        <div class="ref-parallel"><strong>↔ Parallèle avec extime</strong>Comme extime.com, le projet articule image de marque, désirabilité, logique e-commerce, réassurance et optimisation du passage à l'achat.</div>
+        <p class="ref-desc">Projet e-commerce avec un vrai enjeu de marque, de présentation produit et de conversion. Le travail portait surtout sur la clarté de l’offre, la mise en confiance et la fluidité du passage à l’achat.</p>
+        <div class="ref-parallel"><strong>↔ Parallèle avec extime</strong>On retrouve la même équation que sur Extime : une image de marque à préserver, un univers à faire exister, mais aussi un tunnel qui doit rester simple, rassurant et efficace.</div>
         <button class="ref-cta" onclick="openProjectModal('ben-simon')">Voir le travail d'UX/UI</button>
       </div>
     </div>
@@ -2722,8 +3130,8 @@
         <div class="ref-company-badge"><div class="ref-dot"></div><div class="ref-company-name">Société Générale</div><div class="ref-period">Souscription bancaire</div></div>
         <h3>Parcours complexes & forte volumétrie</h3>
         <div class="ref-sector">Services financiers · Souscription · UX critique</div>
-        <p class="ref-desc">Conception et optimisation d'interfaces à fort trafic, avec formulaires, tunnels sensibles, tableaux de bord et exigences élevées de clarté, sécurité perçue et cohérence entre logique métier et usage utilisateur.</p>
-        <div class="ref-parallel"><strong>↔ Parallèle avec extime</strong>On retrouve les mêmes enjeux de parcours critiques, de réduction de friction, de réassurance au moment des actions sensibles et de robustesse UX dans un contexte exposé.</div>
+        <p class="ref-desc">Conception et optimisation d’interfaces à fort trafic, avec formulaires, tunnels sensibles et tableaux de bord. Le vrai sujet était de rendre tout cela plus lisible, plus rassurant et plus cohérent côté usage.</p>
+        <div class="ref-parallel"><strong>↔ Parallèle avec extime</strong>Le parallèle avec Extime tient surtout aux moments sensibles du parcours : quand l’utilisateur hésite, paie, valide ou confie une information importante, l’interface doit tenir sans ambiguïté.</div>
         <button class="ref-cta" onclick="openProjectModal('socgen')">Voir le travail d'UX/UI</button>
       </div>
     </div>
@@ -2734,8 +3142,8 @@
         <div class="ref-company-badge"><div class="ref-dot"></div><div class="ref-company-name">Billet d'avion</div><div class="ref-period">Print & Web</div></div>
         <h3>Branding aviation & identité d'expérience</h3>
         <div class="ref-sector">Voyage · Identité graphique · Univers de marque</div>
-        <p class="ref-desc">Projet orienté identité visuelle autour de l'univers aérien, avec déclinaisons print et web. L'enjeu principal portait sur le ton, la cohérence graphique et la capacité à traduire un imaginaire aviation en expérience lisible et différenciante.</p>
-        <div class="ref-parallel"><strong>↔ Parallèle avec extime</strong>Le lien avec ADP est direct sur l'univers de marque : vocabulaire visuel du voyage, perception premium, storytelling et cohérence entre promesse de service et rendu graphique.</div>
+        <p class="ref-desc">Projet centré sur l’univers aérien, avec des déclinaisons print et web. L’enjeu était de trouver le bon ton, de garder une cohérence graphique forte et de traduire cet imaginaire sans tomber dans quelque chose de décoratif ou gratuit.</p>
+        <div class="ref-parallel"><strong>↔ Parallèle avec extime</strong>Le lien avec ADP est assez direct : vocabulaire du voyage, perception premium, mise en scène de l’expérience et nécessité de faire tenir le fond et la forme ensemble.</div>
         <button class="ref-cta" onclick="openProjectModal('billet-avion')">Voir le travail d'UX/UI</button>
       </div>
     </div>
@@ -2746,8 +3154,8 @@
         <div class="ref-company-badge"><div class="ref-dot"></div><div class="ref-company-name">Cofanet</div><div class="ref-period">Portail B2B</div></div>
         <h3>Portail métier & souscription à produits d’assurance</h3>
         <div class="ref-sector">B2B · Parcours complexes · Data sensible</div>
-        <p class="ref-desc">Travail sur un portail dense, centré sur la consultation, la compréhension et la souscription à des produits d’assurance. Le projet impliquait une structuration de contenus complexes, des parcours à clarifier et une cohérence globale entre design system et besoins métier.</p>
-        <div class="ref-parallel"><strong>↔ Parallèle avec extime</strong>Comme sur extime, le design doit rendre simples des parcours chargés, rassurer sur des données sensibles et maintenir une expérience cohérente malgré la complexité fonctionnelle.</div>
+        <p class="ref-desc">Travail sur un portail dense, autour de la consultation, de la compréhension et de la souscription à des produits d’assurance. L’enjeu principal était de rendre le tout plus clair sans simplifier à outrance des contenus très métier.</p>
+        <div class="ref-parallel"><strong>↔ Parallèle avec extime</strong>Comme sur Extime, il faut faire tenir ensemble densité fonctionnelle, clarté des parcours et sentiment de maîtrise côté utilisateur, sans produire une interface froide ou rigide.</div>
         <button class="ref-cta" onclick="openProjectModal('cofanet')">Voir le travail d'UX/UI</button>
       </div>
     </div>
@@ -2758,8 +3166,8 @@
         <div class="ref-company-badge"><div class="ref-dot"></div><div class="ref-company-name">Le Point</div><div class="ref-period">Média à fort trafic</div></div>
         <h3>Fidélisation, lisibilité & identité forte</h3>
         <div class="ref-sector">Media · Marque historique · Performance</div>
-        <p class="ref-desc">Optimisation d'un environnement éditorial exigeant, dans lequel la marque doit rester forte sans nuire à la lisibilité des contenus, au confort de lecture ni aux objectifs de performance et de fidélisation.</p>
-        <div class="ref-parallel"><strong>↔ Parallèle avec extime</strong>Extime partage cette tension entre identité forte, densité d'informations, performance, logique de fidélisation et nécessité de conserver une lecture claire sur tous les supports.</div>
+        <p class="ref-desc">Optimisation d’un environnement éditorial exigeant, où la marque doit rester présente sans nuire à la lecture, au confort d’usage ni aux objectifs de performance et de fidélisation.</p>
+        <div class="ref-parallel"><strong>↔ Parallèle avec extime</strong>Le point commun avec Extime, c’est cette tension assez classique entre image de marque, densité d’information, performance et lisibilité sur tous les supports.</div>
         <button class="ref-cta" onclick="openProjectModal('le-point')">Voir le travail d'UX/UI</button>
       </div>
     </div>
@@ -2770,8 +3178,8 @@
         <div class="ref-company-badge"><div class="ref-dot"></div><div class="ref-company-name">Babypoom</div><div class="ref-period">Produit B2C</div></div>
         <h3>Identité, illustration & expérience engageante</h3>
         <div class="ref-sector">App & web · Branding · Animation</div>
-        <p class="ref-desc">Projet conçu de bout en bout, avec travail poussé sur l'identité, l'illustration, les animations, la communication et la qualité perçue. La fidélisation reposait autant sur l'utilité que sur l'émotion et la cohérence visuelle.</p>
-        <div class="ref-parallel"><strong>↔ Parallèle avec extime</strong>On retrouve un même besoin de cohérence entre image de marque, expérience utilisateur, engagement, animation et continuité entre les différents points de contact du parcours.</div>
+        <p class="ref-desc">Projet conçu de bout en bout, avec un vrai travail sur l’identité, l’illustration, les animations et la qualité perçue. Ici, l’enjeu n’était pas seulement fonctionnel : il fallait aussi créer de l’attachement et une expérience reconnaissable.</p>
+        <div class="ref-parallel"><strong>↔ Parallèle avec extime</strong>On retrouve la même nécessité de cohérence entre image, expérience, engagement et continuité de parcours. C’est souvent ce qui fait la différence entre une interface correcte et une interface vraiment habitée.</div>
         <button class="ref-cta" onclick="openProjectModal('babypoom')">Voir le travail d'UX/UI</button>
       </div>
     </div>
@@ -2786,157 +3194,151 @@
       <h2 class="section-h2">Démonstration concrète<br><em>d'expertise UX.</em></h2>
     </div>
     <p class="section-lead reveal-left reveal-delay-2">
-      Réponse à la problématique posée par la NxTDF, analyse UX d'extime.com et de parisaeroport.fr.
+      J’ai préféré traiter cette partie comme un vrai exercice : d’abord la problématique de paiement posée par la mission, puis un regard plus large sur les deux sites déjà en place.
     </p>
   </div>
 
   <div class="tabs-nav reveal-zoom">
     <button class="tab-btn active" onclick="switchTab(0)"><span class="tab-index">01</span> Problématique cadrage</button>
-    <button class="tab-btn" onclick="switchTab(1)"><span class="tab-index">02</span> Audit des sites existants</button>
+    <button class="tab-btn" onclick="switchTab(1)"><span class="tab-index">02</span> Audits des sites existants</button>
   </div>
 
   <div class="tab-content active" id="tab0">
-    <div class="case-intro-box">
-      <div class="case-problem reveal-left">
-        <h3>La problématique posée</h3>
-        <p>
-          Actuellement, en bout de parcours achat sur extime.com, le client arrive sur la page Panier (étape 1), puis lorsqu'il clique sur "Valider mon panier", il est redirigé vers une page de paiement externe — quittant complètement l'univers extime.com.
-        </p>
-        <p style="margin-top:1rem;">
-          <strong style="color:var(--white)">Comment intégrer graphiquement ce module de paiement au sein du parcours d'achat sur extime.com, sans rupture entre les deux environnements ?</strong>
-        </p>
+    <div class="demo-section reveal-left problem-main-section">
+      <div class="demo-section-title">La problématique</div>
+      <div class="problem-visuals">
+        <div class="problem-visual reveal-left"><img src="assets/images/opti/Problem - Cart.png" alt="Page panier Extime"></div>
+        <div class="problem-visual reveal-right"><img src="assets/images/opti/Problem - Payment.png" alt="Page de paiement externe"></div>
       </div>
-      <div class="case-meta reveal-right">
-        <div class="case-meta-item"><span class="case-meta-label">Contexte</span><span class="case-meta-val">e-commerce premium, boutique officielle Paris Aéroport</span></div>
-        <div class="case-meta-item"><span class="case-meta-label">Problème UX</span><span class="case-meta-val">Rupture visuelle et de confiance au moment le plus sensible : le paiement</span></div>
-        <div class="case-meta-item"><span class="case-meta-label">Impact business</span><span class="case-meta-val">Taux d'abandon élevé, perte de confiance, incohérence de marque</span></div>
-        <div class="case-meta-item"><span class="case-meta-label">Livrable</span><span class="case-meta-val">3 pistes UX/UI documentées + recommandation</span></div>
+
+      <div class="case-intro-box" style="grid-template-columns: 1fr 1fr; align-items: stretch; margin-bottom: 1.25rem;">
+        <div class="case-problem reveal-left">
+          <h3>Le point de rupture actuel</h3>
+          <p>
+            Aujourd’hui, lorsqu’un utilisateur arrive au bout de son achat sur extime.com, il valide son panier puis quitte immédiatement l’univers Extime pour rejoindre la page de paiement. La rupture ne vient donc pas du paiement lui-même, mais du passage brutal entre deux environnements.
+          </p>
+          <p style="margin-top:1rem;">
+            <strong style="color:var(--white)">La vraie question est la suivante : comment garder le module de paiement dans le parcours Extime, sans faire sortir l’utilisateur de l’expérience qu’il est en train de suivre ?</strong>
+          </p>
+        </div>
+
+        <div class="project-summary-meta reveal-right" style="padding:1.4rem 1.45rem;">
+          <h4>Repères du sujet</h4>
+          <ul style="list-style:none; display:grid; gap:.75rem;">
+            <li><strong>Contexte :</strong> Boutique en ligne Extime, fin de parcours d’achat</li>
+            <li><strong>Constat :</strong> L’utilisateur valide son panier puis change complètement d’environnement</li>
+            <li><strong>Risque :</strong> Perte de continuité, hésitation au paiement, baisse de confiance</li>
+            <li><strong>Objectif :</strong> Faire du paiement une étape cohérente du parcours Extime</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="case-intro-box problem-reading-row" style="grid-template-columns: 1fr; align-items: stretch; margin-bottom:1.25rem;">
+        <div class="case-problem reveal-left problem-reading-full" style="margin-bottom:0;">
+          <h3>Lecture de la situation</h3>
+          <p>
+            Ici, le problème n’est pas seulement graphique. Il touche à la continuité du parcours. Au moment précis où l’utilisateur devrait être le plus rassuré, il perd ses repères visuels, son cadre de navigation et la logique familière du site.
+          </p>
+          <p style="margin-top:1rem;">
+            La réponse attendue n’est donc pas un simple habillage. Il faut construire une transition qui donne le sentiment que le paiement appartient encore au parcours Extime, avec les mêmes repères, le même ton et la même logique d’usage.
+          </p>
+        </div>
+
+        <div class="flow-diagram reveal-right problem-white-box" style="margin-bottom:0;">
+          <h3>Parcours actuel : les points de rupture</h3>
+          <div class="flow-steps" style="flex-direction:row; gap:.8rem;">
+            <div class="flow-step">
+              <div class="flow-step-num">1</div>
+              <div class="flow-step-title">Navigation sur Extime</div>
+              <p>L’utilisateur parcourt les produits, sélectionne ses articles et construit son panier dans un univers cohérent.</p>
+            </div>
+            <div class="flow-step">
+              <div class="flow-step-num">2</div>
+              <div class="flow-step-title">Page panier</div>
+              <p>Le récapitulatif reste dans le cadre Extime. Tout est encore lisible, familier et maîtrisé.</p>
+            </div>
+            <div class="flow-step problem-step">
+              <div class="flow-step-num">3</div>
+              <div class="flow-step-title">Sortie du parcours</div>
+              <p>Au clic sur la validation, l’utilisateur quitte Extime et change immédiatement de décor.</p>
+              <span class="problem-badge">POINT DE FRICTION MAJEUR</span>
+            </div>
+            <div class="flow-step">
+              <div class="flow-step-num">4</div>
+              <div class="flow-step-title">Paiement</div>
+              <p>Le paiement se fait dans un autre environnement, avec moins de continuité et moins de repères.</p>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
 
-    <div class="case-problem reveal-left" style="margin-bottom:2rem;">
-      <h3>Lecture UX de la problématique</h3>
-      <p>
-        La problématique ne porte pas seulement sur un ajustement graphique du module bancaire. Elle révèle surtout un point de friction critique dans le tunnel d’achat. Au moment précis où l’utilisateur s’apprête à payer, il quitte brutalement l’univers visuel d’Extime pour être redirigé vers un environnement externe, moins rassurant et moins cohérent avec le reste du parcours.
-      </p>
-      <p style="margin-top:1rem;">
-        Cette rupture crée une surcharge cognitive au moment le plus sensible du tunnel. Changement d’URL, disparition des repères de marque et perte de continuité visuelle peuvent fragiliser la confiance, ralentir la décision, voire provoquer un abandon du panier.
-      </p>
-      <p style="margin-top:1rem;">
-        L’enjeu est donc double : préserver la perception de sécurité côté utilisateur, tout en absorbant une contrainte technique forte. Le rôle du design n’est pas de masquer la technique, mais de construire une continuité visuelle et interactionnelle suffisamment solide pour réduire le choc perçu.
-      </p>
-      <p style="margin-top:1rem;">
-        La réponse UX/UI attendue consiste donc à créer une interface de transition maîtrisée : même langage graphique, mêmes repères, même niveau de réassurance, même logique de parcours. Autrement dit, faire en sorte que, dans l’esprit de l’utilisateur, le paiement reste une étape naturelle de l’expérience Extime, même lorsque l’architecture technique impose un intermédiaire externe.
-      </p>
-    </div>
-
-    <div class="flow-diagram reveal-right">
-      <h3>Parcours actuel : les points de rupture</h3>
-      <div class="flow-steps">
-        <div class="flow-step">
-          <div class="flow-step-num">1</div>
-          <div class="flow-step-title">Navigation extime.com</div>
-          <p>L'utilisateur parcourt, sélectionne ses articles, ajoute au panier. Univers visuel extime.com cohérent.</p>
-        </div>
-        <div class="flow-arrow">→</div>
-        <div class="flow-step">
-          <div class="flow-step-num">2</div>
-          <div class="flow-step-title">Page panier</div>
-          <p>Récapitulatif des articles. Toujours dans l'univers extime.com. CTA "Valider mon panier".</p>
-        </div>
-        <div class="flow-arrow">→</div>
-        <div class="flow-step problem-step">
-          <div class="flow-step-num">3</div>
-          <div class="flow-step-title">Rupture de parcours</div>
-          <p>L'utilisateur quitte extime.com. Nouvelle URL, nouveau design, perte des repères visuels.</p>
-          <span class="problem-badge">POINT DE FRICTION MAJEUR</span>
-        </div>
-        <div class="flow-arrow">→</div>
-        <div class="flow-step">
-          <div class="flow-step-num">4</div>
-          <div class="flow-step-title">Paiement externe</div>
-          <p>Module de paiement tiers. Données bancaires saisies dans un environnement inconnu.</p>
-        </div>
-      </div>
-    </div>
-
-    <div class="section-tag reveal-left" style="margin-top:2rem;">3 pistes de solution</div>
-    <div class="solutions-grid">
-      <div class="solution-card reveal-left">
-        <div class="solution-num">01</div>
-        <h4>Overlay / Modal de paiement</h4>
+    <div class="demo-section reveal-right solution-section">
+      <div class="demo-section-title">Les solutions proposées</div>
+      <div class="case-problem reveal-left" style="margin-bottom:1.4rem;">
+        <h3>Deux pistes de travail plus claires</h3>
         <p>
-          Intégrer le module de paiement dans une modale overlay qui s'ouvre au-dessus de la page Panier d'extime.com. L'arrière-plan reste visible (flou), maintenant le contexte visuel extime.
+          Pour rester fidèle au besoin formulé, je pars du principe qu’il ne faut plus faire sortir l’utilisateur du parcours Extime après la validation du panier. Les deux pistes ci-dessous vont dans ce sens, avec deux niveaux d’intégration différents.
         </p>
-        <div class="solution-pros-cons">
-          <div class="pros">Aucune navigation, contexte préservé</div>
-          <div class="pros">Sentiment de sécurité (on "reste" sur le site)</div>
-          <div class="cons">Contrainte iframe/CSP côté technique</div>
-          <div class="cons">Ergonomie mobile à soigner</div>
-        </div>
       </div>
 
-      <div class="solution-card recommended reveal-zoom reveal-delay-1">
-        <div class="solution-num">02</div>
-        <h4>Page de paiement branded</h4>
-        <p>
-          Créer une page de paiement dédiée intégrée au parcours extime.com : même header/footer, même typographie, mêmes couleurs — avec le module de paiement tiers dans un iframe sécurisé stylisé.
-        </p>
-        <div class="solution-pros-cons">
-          <div class="pros">Continuité totale de l'expérience visuelle</div>
-          <div class="pros">URL extime.com maintenue, rassurant</div>
-          <div class="pros">Réalisable sans refonte du module de paiement</div>
-          <div class="cons">Nécessite coordination avec l'équipe back</div>
-        </div>
+      <div class="figma-solutions">
+        <a class="figma-solution-card reveal-left recommended" href="#" target="_blank" rel="noreferrer">
+          <span class="figma-solution-badge">Solution recommandée</span>
+          <img src="assets/images/opti/Figma_solution1.png" alt="Solution 1 dans Figma">
+          <div class="figma-solution-body">
+            <h4>Solution 1 · Page de paiement intégrée à Extime</h4>
+            <p>Après validation du panier, l’utilisateur arrive sur une vraie page de paiement Extime : même en-tête, même repérage, même récapitulatif, avec le module de paiement intégré dans cette page.</p>
+          </div>
+        </a>
+        <a class="figma-solution-card reveal-right" href="#" target="_blank" rel="noreferrer">
+          <img src="assets/images/opti/Figma_solution2.png" alt="Solution 2 dans Figma">
+          <div class="figma-solution-body">
+            <h4>Solution 2 · Étape paiement ajoutée au tunnel</h4>
+            <p>Le panier devient la première étape d’un parcours plus continu. Le paiement arrive dans une étape suivante, toujours dans le cadre Extime, avec progression visible et continuité complète du parcours.</p>
+          </div>
+        </a>
       </div>
 
-      <div class="solution-card reveal-right reveal-delay-2">
-        <div class="solution-num">03</div>
-        <h4>Tunnel de paiement intégré</h4>
-        <p>
-          Concevoir un tunnel de paiement en étapes (stepper) entièrement dans extime.com : Panier → Livraison → Paiement → Confirmation. Chaque étape reste dans l'univers graphique du site.
-        </p>
-        <div class="solution-pros-cons">
-          <div class="pros">Expérience la plus fluide et premium</div>
-          <div class="pros">Réduit l'abandon en donnant de la visibilité</div>
-          <div class="cons">Impacte le back-end, effort plus important</div>
-          <div class="cons">À valider avec contraintes techniques ADP</div>
-        </div>
-      </div>
+      <a class="figma-link reveal-zoom" href="#" target="_blank" rel="noreferrer">Voir les solutions proposées dans Figma</a>
     </div>
   </div>
 
   <div class="tab-content" id="tab1">
-    <div class="audit-intro reveal-left">
-      <div class="section-tag">Analyse UX — extime.com</div>
-      <p style="font-size:0.92rem;color:var(--muted);line-height:1.85;margin-top:0.8rem;">
-        Audit réalisé sur la boutique officielle de Paris Aéroport. Extime.com propose une expérience premium avec une charte visuelle soignée, mais plusieurs frictions UX méritent attention — notamment dans le parcours d'achat et la navigation mobile.
-      </p>
+    <div class="demo-section reveal-left">
+      <div class="demo-section-title">Audit du site extime.com</div>
+      <div class="demo-hero-image reveal-zoom"><img src="assets/images/demo/Audit - Home_extime.png" alt="Accueil Extime"></div>
+      <div class="audit-intro reveal-left">
+        <p style="font-size:0.92rem;color:var(--muted);line-height:1.85;margin-top:0;">
+          En regardant Extime comme le ferait un utilisateur attentif, on voit assez vite ce qui fonctionne bien, ce qui rassure, et les endroits où l’expérience perd un peu de sa fluidité.
+        </p>
+      </div>
+      <div class="audit-grid">
+        <div class="audit-card reveal-left"><div class="audit-score good">8/10</div><h4>Identité visuelle & branding</h4><ul><li>Charte graphique premium et cohérente</li><li>Photographies de haute qualité</li><li>Typographie élégante, adaptée au luxe</li><li>Couleurs harmonieuses et sobres</li></ul></div>
+        <div class="audit-card reveal-zoom reveal-delay-1"><div class="audit-score medium">6/10</div><h4>Navigation & architecture</h4><ul><li>Menu principal clair mais profond</li><li>Filtres produits à améliorer</li><li>Recherche peu mise en avant</li><li>Breadcrumbs absents sur les fiches produit</li></ul></div>
+        <div class="audit-card reveal-right reveal-delay-2"><div class="audit-score weak">5/10</div><h4>Parcours d'achat</h4><ul><li>Rupture visuelle au paiement</li><li>Pas de progression visible</li><li>Validation du panier encore discrète</li><li>Réassurance perfectible au moment clé</li></ul></div>
+        <div class="audit-card reveal-left"><div class="audit-score medium">6/10</div><h4>Expérience mobile</h4><ul><li>Responsive fonctionnel mais améliorable</li><li>Images parfois lentes sur mobile</li><li>Zones de contact à agrandir</li><li>Menu peu intuitif</li></ul></div>
+        <div class="audit-card reveal-zoom reveal-delay-1"><div class="audit-score good">7/10</div><h4>Performance & référencement</h4><ul><li>Indicateurs globaux corrects</li><li>Images à optimiser</li><li>Balises bien renseignées</li><li>Chargement différé à étendre</li></ul></div>
+        <div class="audit-card reveal-right reveal-delay-2"><div class="audit-score medium">6/10</div><h4>Accessibilité</h4><ul><li>Contrastes inégaux</li><li>Textes alternatifs incomplets</li><li>Navigation clavier à renforcer</li><li>Libellés d’aide partiels</li></ul></div>
+      </div>
     </div>
 
-    <div class="audit-grid">
-      <div class="audit-card reveal-left"><div class="audit-score good">8/10</div><h4>Identité visuelle & branding</h4><ul><li>Charte graphique premium et cohérente</li><li>Photographies de haute qualité</li><li>Typographie élégante, adaptée au luxe</li><li>Couleurs harmonieuses et sobres</li></ul></div>
-      <div class="audit-card reveal-zoom reveal-delay-1"><div class="audit-score medium">6/10</div><h4>Navigation & architecture</h4><ul><li>Menu principal clair mais profond</li><li>Filtres produits à améliorer</li><li>Recherche peu mise en avant</li><li>Breadcrumbs absents sur les fiches produit</li></ul></div>
-      <div class="audit-card reveal-right reveal-delay-2"><div class="audit-score weak">5/10</div><h4>Parcours d'achat / Checkout</h4><ul><li>Rupture visuelle au paiement</li><li>Pas de stepper de progression visible</li><li>CTA panier encore discret</li><li>Réassurance perfectible au moment clé</li></ul></div>
-      <div class="audit-card reveal-left"><div class="audit-score medium">6/10</div><h4>Expérience mobile</h4><ul><li>Responsive fonctionnel mais améliorable</li><li>Images parfois lentes sur mobile</li><li>Zones de touch à agrandir</li><li>Menu hamburger peu intuitif</li></ul></div>
-      <div class="audit-card reveal-zoom reveal-delay-1"><div class="audit-score good">7/10</div><h4>Performance & SEO</h4><ul><li>Core Web Vitals globalement corrects</li><li>Images à optimiser</li><li>Balises meta bien renseignées</li><li>Lazy-loading à étendre</li></ul></div>
-      <div class="audit-card reveal-right reveal-delay-2"><div class="audit-score medium">6/10</div><h4>Accessibilité</h4><ul><li>Contrastes insuffisants sur certains textes</li><li>Alt text incomplets sur les images produit</li><li>Focus clavier à améliorer</li><li>ARIA labels partiels sur le formulaire</li></ul></div>
-    </div>
-
-    <div class="audit-intro reveal-left" style="margin-top:2.2rem;">
-      <div class="section-tag">Analyse UX — parisaeroport.fr</div>
-      <p style="font-size:0.92rem;color:var(--muted);line-height:1.85;margin-top:0.8rem;">
-        Audit du site institutionnel du Groupe ADP. Parisaeroport.fr couvre un spectre de besoins très large (vols, parking, shopping, services) avec des millions d'utilisateurs aux profils très différents. L'enjeu UX principal est la gestion de la complexité.
-      </p>
-    </div>
-
-    <div class="audit-grid">
-      <div class="audit-card reveal-left"><div class="audit-score medium">7/10</div><h4>Architecture de l'information</h4><ul><li>Catégories bien organisées en surface</li><li>Profondeur de navigation parfois déroutante</li><li>Moteur de recherche peu proéminent</li><li>Liens croisés ADP ↔ extime à clarifier</li></ul></div>
-      <div class="audit-card reveal-zoom reveal-delay-1"><div class="audit-score good">8/10</div><h4>Recherche de vols</h4><ul><li>Fonctionnalité principale bien exposée</li><li>Filtres efficaces et rapides</li><li>Mise à jour temps réel des données</li><li>Affichage des perturbations clair</li></ul></div>
-      <div class="audit-card reveal-right reveal-delay-2"><div class="audit-score medium">6/10</div><h4>Cohérence avec extime.com</h4><ul><li>Deux chartes graphiques distinctes</li><li>Transition pas toujours fluide entre les deux</li><li>Navigation non partagée</li><li>Opportunité de cross-selling manquée</li></ul></div>
-      <div class="audit-card reveal-left"><div class="audit-score medium">6/10</div><h4>Mobile & App</h4><ul><li>Site responsive mais très dense</li><li>App mobile plus adaptée aux usages airport</li><li>Cohérence app/site web à renforcer</li><li>Notifications push peu exploitées</li></ul></div>
-      <div class="audit-card reveal-zoom reveal-delay-1"><div class="audit-score weak">5/10</div><h4>Parcours achat parking</h4><ul><li>Trop d'étapes, manque de guidance</li><li>Comparateur d'offres peu lisible</li><li>Pas de récapitulatif visible en cours de saisie</li><li>Abandon probable à l'étape de sélection</li></ul></div>
-      <div class="audit-card reveal-right reveal-delay-2"><div class="audit-score good">7/10</div><h4>Performance & fiabilité</h4><ul><li>Temps de réponse corrects sur desktop</li><li>Mobile plus lent (images lourdes)</li><li>Bonne gestion des pics de trafic</li><li>Pas d'erreur 404 notable sur les parcours principaux</li></ul></div>
+    <div class="demo-section reveal-right">
+      <div class="demo-section-title">Audit du site parisaeroport.fr</div>
+      <div class="demo-hero-image reveal-zoom"><img src="assets/images/demo/Audit - Home_parisaeroport.png" alt="Accueil Paris Aéroport"></div>
+      <div class="audit-intro reveal-left">
+        <p style="font-size:0.92rem;color:var(--muted);line-height:1.85;margin-top:0;">
+          Sur parisaeroport.fr, le sujet est un peu différent : moins centré conversion immédiate, plus centré orientation, information et coexistence de nombreux besoins dans un même environnement.
+        </p>
+      </div>
+      <div class="audit-grid">
+        <div class="audit-card reveal-left"><div class="audit-score medium">7/10</div><h4>Architecture de l'information</h4><ul><li>Catégories bien organisées en surface</li><li>Profondeur parfois déroutante</li><li>Moteur de recherche peu visible</li><li>Liens croisés à clarifier avec Extime</li></ul></div>
+        <div class="audit-card reveal-zoom reveal-delay-1"><div class="audit-score good">8/10</div><h4>Recherche de vols</h4><ul><li>Fonction principale bien exposée</li><li>Filtres efficaces</li><li>Mises à jour claires</li><li>Gestion des perturbations lisible</li></ul></div>
+        <div class="audit-card reveal-right reveal-delay-2"><div class="audit-score medium">6/10</div><h4>Cohérence avec Extime</h4><ul><li>Deux univers graphiques distincts</li><li>Passage pas toujours fluide</li><li>Navigation non partagée</li><li>Passerelles encore peu visibles</li></ul></div>
+        <div class="audit-card reveal-left"><div class="audit-score medium">6/10</div><h4>Mobile & application</h4><ul><li>Site dense sur petit écran</li><li>Application plus adaptée à certains usages</li><li>Cohérence générale à renforcer</li><li>Notifications peu exploitées</li></ul></div>
+        <div class="audit-card reveal-zoom reveal-delay-1"><div class="audit-score weak">5/10</div><h4>Parcours achat parking</h4><ul><li>Trop d'étapes</li><li>Comparaison peu lisible</li><li>Récapitulatif insuffisant</li><li>Abandon probable assez tôt</li></ul></div>
+        <div class="audit-card reveal-right reveal-delay-2"><div class="audit-score good">7/10</div><h4>Performance & fiabilité</h4><ul><li>Temps de réponse corrects sur ordinateur</li><li>Mobile plus lent</li><li>Bonne tenue sur les pics de trafic</li><li>Parcours principaux fiables</li></ul></div>
+      </div>
     </div>
   </div>
 </section>
@@ -2949,7 +3351,7 @@
       <h2 class="section-h2">Une mission qui résonne,<br><em>un profil qui répond.</em></h2>
     </div>
     <p class="section-lead reveal-left reveal-delay-2">
-      Au-delà des compétences techniques, c'est aussi une histoire de sensibilité et d'intérêt sincère pour ce que vous construisez.
+      Au-delà des compétences, il y a aussi une vraie affinité avec le sujet, le terrain et la manière dont cette mission s’inscrit dans un univers très concret.
     </p>
   </div>
 
@@ -2957,13 +3359,13 @@
     <div class="postule-text reveal-left">
       <h3>Pourquoi cette mission m’intéresse</h3>
       <p>
-        Je recherche une mission avec une vraie matière UX/UI, dans laquelle je peux être utile autant sur la réflexion que sur la production. Le sujet Extime me parle particulièrement, parce qu’il se situe au croisement du service, du commerce, de la marque et d’un imaginaire fort lié au voyage.
+        Ce qui m’attire ici, c’est d’abord la matière du sujet : une expérience réelle, des usages concrets, une marque installée, et un terrain où l’UX/UI ne sert pas seulement à “faire beau”, mais à rendre le parcours plus fluide et plus crédible.
       </p>
       <p style="margin-top:1rem;">
-        J’ai toujours eu une vraie sensibilité pour l’univers de l’aviation et du déplacement. La découverte du paramoteur m’a même donné, à mon échelle, un rapport très concret à cette culture du parcours, de l’anticipation et de l’expérience vécue.
+        J’ai aussi une affinité ancienne avec l’univers du voyage et de l’aviation. Le paramoteur m’a donné, à mon niveau, un rapport assez concret à cette idée de trajectoire, d’anticipation et de lecture de l’environnement — des notions qui résonnent forcément quand on travaille sur des services liés au déplacement.
       </p>
       <p style="margin-top:1rem;">
-        J’y vois aussi un terrain où mon profil peut être pertinent : qualité graphique, lisibilité des parcours, continuité entre plusieurs environnements, avec un format part-time qui me permet de m’impliquer durablement, avec régularité et concentration.
+        Enfin, le format part-time me convient bien : il permet de s’impliquer sérieusement, dans la durée, avec de la régularité et du recul. C’est un cadre dans lequel je sais rester présent, précis et réellement utile.
       </p>
     </div>
     <div class="postule-image reveal-right reveal-delay-1">
@@ -2974,8 +3376,8 @@
   <div class="contact-final reveal-zoom">
     <h3>Prêt à <em>décoller ensemble ?</em></h3>
     <p>
-      Je suis disponible pour un entretien à votre convenance, en visio ou en présentiel à Orly.<br>
-      Portfolio complet disponible sur demande — une mise en ligne est prévue prochainement sur liven-studio.fr.
+      Je suis disponible pour en parler simplement, en visio comme en présentiel à Orly.<br>
+      Et si cette approche vous parle, je serai ravi d’aller plus loin avec vous.
     </p>
     <div class="contact-links">
       <a href="mailto:greg@liven-studio.fr" class="btn-gold hidden">greg@liven-studio.fr</a>
@@ -3135,6 +3537,7 @@
       const hit = link.querySelector('.nav-hit');
       const display = link.querySelector('.nav-display');
       if (!hit || !display) return;
+
       const styles = window.getComputedStyle(display);
       measurer.style.fontFamily = styles.fontFamily;
       measurer.style.fontSize = styles.fontSize;
@@ -3142,10 +3545,12 @@
       measurer.style.letterSpacing = styles.letterSpacing;
       measurer.style.lineHeight = styles.lineHeight;
       measurer.style.textTransform = styles.textTransform;
+
       measurer.textContent = link.dataset.base || '';
       const baseWidth = Math.ceil(measurer.getBoundingClientRect().width);
       measurer.textContent = link.dataset.alt || '';
       const altWidth = Math.ceil(measurer.getBoundingClientRect().width);
+
       hit.style.width = `${Math.max(baseWidth, altWidth)}px`;
     });
 
@@ -3654,9 +4059,9 @@
       cvModal.classList.add('open');
       if (cvScroll) {
         cvScroll.scrollTo({ top: 0, behavior: 'auto' });
+        cvScroll.querySelectorAll('.section, .side-group, .experience, .exp-block, .reveal-left, .reveal-right, #cv-modal-title').forEach((el) => el.classList.add('modal-reveal'));
         observeInside(cvScroll, cvScroll, modalRevealSelector);
       }
-      if (cvBackToTop) cvBackToTop.classList.remove('visible');
     });
   }
 
@@ -3679,23 +4084,227 @@
   if (exportCvPdf) {
     exportCvPdf.addEventListener('click', () => {
       const href = exportCvPdf.getAttribute('href') || '';
-      if (!href) alert('Le fichier PDF n\'est pas défini.');
+      if (!href) {
+        alert("Le fichier PDF n'est pas défini.");
+      }
     });
   }
 
-  if (cvScroll) {
-    cvScroll.querySelectorAll('.section, .side-group, .experience, .exp-block, .reveal-left, .reveal-right, #cv-modal-title').forEach((el) => el.classList.add('modal-reveal'));
-    observeInside(cvScroll, cvScroll, modalRevealSelector);
-    if (cvBackToTop) {
-      cvScroll.addEventListener('scroll', () => {
-        const tallEnough = cvScroll.scrollHeight > 1000;
-        cvBackToTop.classList.toggle('visible', tallEnough && cvScroll.scrollTop > cvScroll.clientHeight * 0.45);
-      });
-      cvBackToTop.addEventListener('click', () => {
-        cvScroll.scrollTo({ top: 0, behavior: 'smooth' });
-      });
-    }
+  if (cvScroll && cvBackToTop) {
+    cvScroll.addEventListener('scroll', () => {
+      const tallEnough = cvScroll.scrollHeight > 1000;
+      cvBackToTop.classList.toggle('visible', tallEnough && cvScroll.scrollTop > cvScroll.clientHeight * 0.45);
+    });
+
+    cvBackToTop.addEventListener('click', () => {
+      cvScroll.scrollTo({ top: 0, behavior: 'smooth' });
+    });
   }
+
+  document.querySelectorAll('.identity-carousel').forEach((carousel) => {
+    const track = carousel.querySelector('.identity-carousel-track');
+    const prevBtn = carousel.querySelector('.identity-carousel-prev');
+    const nextBtn = carousel.querySelector('.identity-carousel-next');
+    if (!track || !prevBtn || !nextBtn) return;
+
+    let isAnimating = false;
+    let holdInterval = null;
+    let touchStartX = 0;
+    let touchStartScroll = 0;
+    let isTouchDragging = false;
+
+    const updateButtons = () => {
+      const maxScroll = Math.max(0, track.scrollWidth - track.clientWidth);
+      prevBtn.classList.toggle('is-disabled', track.scrollLeft <= 6);
+      nextBtn.classList.toggle('is-disabled', track.scrollLeft >= maxScroll - 6);
+    };
+
+    const getMaxScroll = () => Math.max(0, track.scrollWidth - track.clientWidth);
+
+    const getNextSnap = (direction) => {
+      const tags = [...track.querySelectorAll('.identity-tags span')];
+      if (!tags.length) return direction > 0 ? getMaxScroll() : 0;
+
+      const current = track.scrollLeft;
+      const maxScroll = getMaxScroll();
+      const tolerance = 10;
+
+      if (direction > 0) {
+        if (current >= maxScroll - 60) return maxScroll;
+        const next = tags.find((tag) => tag.offsetLeft > current + tolerance && (tag.offsetLeft + tag.offsetWidth) > current + track.clientWidth - tolerance);
+        return next ? Math.min(next.offsetLeft, maxScroll) : maxScroll;
+      }
+
+      if (current <= 60) return 0;
+      const prev = [...tags].reverse().find((tag) => tag.offsetLeft < current - tolerance);
+      return prev ? Math.max(0, Math.min(prev.offsetLeft, maxScroll)) : 0;
+    };
+
+    const animateScrollTo = (target, duration = 620) => {
+      const start = track.scrollLeft;
+      const maxScroll = Math.max(0, track.scrollWidth - track.clientWidth);
+      const destination = Math.max(0, Math.min(target, maxScroll));
+      const distance = destination - start;
+      if (Math.abs(distance) < 2) {
+        track.scrollLeft = destination;
+        updateButtons();
+        return;
+      }
+      const startTime = performance.now();
+      isAnimating = true;
+
+      const easeInOutExpo = (t) => {
+        if (t === 0) return 0;
+        if (t === 1) return 1;
+        return t < 0.5
+          ? Math.pow(2, 20 * t - 10) / 2
+          : (2 - Math.pow(2, -20 * t + 10)) / 2;
+      };
+
+      const frame = (now) => {
+        const elapsed = now - startTime;
+        const progress = Math.min(elapsed / duration, 1);
+        const eased = easeInOutExpo(progress);
+        track.scrollLeft = start + distance * eased;
+        updateButtons();
+        if (progress < 1) {
+          requestAnimationFrame(frame);
+        } else {
+          isAnimating = false;
+          track.scrollLeft = destination;
+          updateButtons();
+        }
+      };
+
+      requestAnimationFrame(frame);
+    };
+
+    const nudge = (direction) => {
+      if (isAnimating) return;
+      const maxScroll = getMaxScroll();
+      const current = track.scrollLeft;
+      const target = direction > 0
+        ? Math.min(current + Math.max(90, track.clientWidth * 0.28), maxScroll)
+        : Math.max(current - Math.max(90, track.clientWidth * 0.28), 0);
+      animateScrollTo(target, 260);
+    };
+
+    const startHold = (direction) => {
+      if ((direction < 0 && prevBtn.classList.contains('is-disabled')) || (direction > 0 && nextBtn.classList.contains('is-disabled'))) return;
+      clearInterval(holdInterval);
+      nudge(direction);
+      holdInterval = setInterval(() => {
+        if ((direction < 0 && prevBtn.classList.contains('is-disabled')) || (direction > 0 && nextBtn.classList.contains('is-disabled'))) {
+          clearInterval(holdInterval);
+          holdInterval = null;
+          return;
+        }
+        nudge(direction);
+      }, 220);
+    };
+
+    const stopHold = () => {
+      clearInterval(holdInterval);
+      holdInterval = null;
+    };
+
+    prevBtn.addEventListener('click', () => {
+      if (isAnimating) return;
+      animateScrollTo(getNextSnap(-1));
+    });
+
+    nextBtn.addEventListener('click', () => {
+      if (isAnimating) return;
+      animateScrollTo(getNextSnap(1));
+    });
+
+    ['mousedown','touchstart'].forEach((evt) => {
+      prevBtn.addEventListener(evt, (e) => {
+        if (evt === 'touchstart') e.preventDefault();
+        startHold(-1);
+      }, { passive: false });
+      nextBtn.addEventListener(evt, (e) => {
+        if (evt === 'touchstart') e.preventDefault();
+        startHold(1);
+      }, { passive: false });
+    });
+
+    ['mouseup','mouseleave','touchend','touchcancel'].forEach((evt) => {
+      prevBtn.addEventListener(evt, stopHold);
+      nextBtn.addEventListener(evt, stopHold);
+    });
+    document.addEventListener('mouseup', stopHold);
+    document.addEventListener('touchend', stopHold, { passive: true });
+    document.addEventListener('touchcancel', stopHold, { passive: true });
+
+    track.addEventListener('touchstart', (e) => {
+      if (!e.touches.length) return;
+      stopHold();
+      isTouchDragging = true;
+      touchStartX = e.touches[0].clientX;
+      touchStartScroll = track.scrollLeft;
+    }, { passive: true });
+
+    track.addEventListener('touchmove', (e) => {
+      if (!isTouchDragging || !e.touches.length) return;
+      const deltaX = e.touches[0].clientX - touchStartX;
+      track.scrollLeft = touchStartScroll - deltaX;
+      updateButtons();
+    }, { passive: true });
+
+    const finishTouchDrag = () => {
+      if (!isTouchDragging) return;
+      isTouchDragging = false;
+      const current = track.scrollLeft;
+      const nextRight = getNextSnap(1);
+      const nextLeft = getNextSnap(-1);
+      const distRight = Math.abs(nextRight - current);
+      const distLeft = Math.abs(current - nextLeft);
+      const target = distLeft <= distRight ? nextLeft : nextRight;
+      animateScrollTo(target, 320);
+    };
+
+    track.addEventListener('touchend', finishTouchDrag, { passive: true });
+    track.addEventListener('touchcancel', finishTouchDrag, { passive: true });
+
+    let pointerStartX = 0;
+    let pointerStartScroll = 0;
+    let isPointerDragging = false;
+
+    track.addEventListener('pointerdown', (e) => {
+      if (e.pointerType !== 'touch' && e.pointerType !== 'pen') return;
+      stopHold();
+      isPointerDragging = true;
+      pointerStartX = e.clientX;
+      pointerStartScroll = track.scrollLeft;
+    });
+
+    track.addEventListener('pointermove', (e) => {
+      if (!isPointerDragging || (e.pointerType !== 'touch' && e.pointerType !== 'pen')) return;
+      const deltaX = e.clientX - pointerStartX;
+      track.scrollLeft = pointerStartScroll - deltaX;
+      updateButtons();
+    });
+
+    track.addEventListener('pointerup', () => {
+      if (!isPointerDragging) return;
+      isPointerDragging = false;
+      finishTouchDrag();
+    });
+
+    track.addEventListener('pointercancel', () => {
+      isPointerDragging = false;
+      finishTouchDrag();
+    });
+
+    track.addEventListener('scroll', () => {
+      if (!isAnimating) updateButtons();
+    }, { passive: true });
+
+    window.addEventListener('resize', updateButtons);
+    requestAnimationFrame(updateButtons);
+    setTimeout(updateButtons, 120);
+  });
 
   if (backToTopBtn) {
     backToTopBtn.addEventListener('click', () => {
