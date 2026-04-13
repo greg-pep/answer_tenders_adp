@@ -2143,6 +2143,23 @@
     }
 
     @media (max-width: 720px) {
+      #loader {
+        padding-left: 1rem;
+        padding-right: 1rem;
+      }
+      .loader-line {
+        width: min(200px, calc(100vw - 2rem));
+        max-width: 100%;
+      }
+      .loader-text {
+        width: 100%;
+        max-width: calc(100vw - 2rem);
+        text-align: center;
+        letter-spacing: 0.18em;
+        font-size: 0.62rem;
+        line-height: 1.5;
+        word-break: break-word;
+      }
       .back-to-top { right: 1rem; bottom: 1rem; width: 48px; height: 48px; }
       nav { padding: 0 1rem; }
       .hero-content { padding: 6.8rem 1rem 4rem; }
@@ -2292,6 +2309,53 @@
       .identity-preview { font-size: .76rem; }
       .project-close,
       .cv-close { top: .15rem; }
+
+      .problem-main-section .case-intro-box,
+      .problem-main-section .problem-reading-row,
+      .problem-main-section .problem-parcours-row {
+        grid-template-columns: 1fr !important;
+        gap: 1rem;
+      }
+      .problem-main-section .case-problem,
+      .problem-main-section .project-summary-meta,
+      .problem-main-section .flow-diagram,
+      .problem-main-section .problem-reading-full,
+      .problem-main-section .problem-white-box {
+        width: 100%;
+        max-width: 100%;
+      }
+      .problem-main-section .case-problem,
+      .problem-main-section .project-summary-meta {
+        padding: 1.15rem;
+      }
+      .problem-main-section .case-problem h3,
+      .problem-main-section .project-summary-meta h4,
+      .problem-main-section .flow-diagram h3 {
+        font-size: .95rem;
+        line-height: 1.3;
+        margin-bottom: .7rem;
+      }
+      .problem-main-section .case-problem p,
+      .problem-main-section .project-summary-meta li,
+      .problem-main-section .flow-step p {
+        font-size: .88rem;
+        line-height: 1.6;
+      }
+      .problem-main-section .flow-diagram {
+        padding: 1.15rem;
+      }
+      .problem-main-section .flow-steps {
+        flex-direction: column !important;
+        gap: .8rem;
+      }
+      .problem-main-section .flow-arrow {
+        display: none;
+      }
+      .problem-main-section .flow-step {
+        width: 100%;
+        flex: 1 1 auto;
+      }
+
       .plane-anim,
       #cursor,
       #cursor-ring { display: none; }
