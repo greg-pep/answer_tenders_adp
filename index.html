@@ -1725,6 +1725,12 @@
       background: rgba(255,255,255,0.96);
       padding: .5rem;
     }
+    .figma-solution-image-1 {
+      object-fit: cover;
+    }
+    .figma-solution-image-2 {
+      object-fit: contain;
+    }
     .figma-solution-body {
       padding: 1rem 1rem 1.1rem;
     }
@@ -3352,19 +3358,19 @@
       <div class="figma-solutions">
         <div class="figma-solution-card reveal-left recommended">
           <span class="figma-solution-badge">Solution recommandée</span>
-          <img src="assets/images/opti/Figma_solution2.png" alt="Solution 2 dans Figma">
+          <img class="figma-solution-image-1" src="assets/images/opti/Figma_solution1.png" alt="Solution 1 dans Figma">
           <div class="figma-solution-body">
-            <h4>Solution 2 · Une page de paiement séparée, mais visuellement raccord</h4>
-            <p>Si la bifurcation vers une autre page reste techniquement obligatoire, il faut au moins éviter l’effet de rupture. L’idée serait d’appliquer un habillage cohérent au module ou à la page de paiement, selon un principe de <strong>themed payment page</strong>.</p>
+            <h4>Solution 1 (UI) : Page de paiement visuellement homogène</h4>
+            <p>Si la bifurcation vers une autre page est obligatoire, il faut au moins éviter l’effet de rupture. L’idée serait d’appliquer un habillage cohérent au module, selon un principe de <strong>themed page</strong>.</p>
             <p style="margin-top:.65rem;">L’enjeu reste le même : conserver les repères, reprendre les codes du tunnel et limiter au maximum la sensation de sortie du parcours, avec plus de <strong>réassurance</strong>.</p>
           </div>
         </div>
         <div class="figma-solution-card reveal-right">
-          <img src="assets/images/opti/Figma_solution1.png" alt="Solution 1 dans Figma">
+          <img class="figma-solution-image-2" src="assets/images/opti/Figma_solution2.png" alt="Solution 2 dans Figma">
           <div class="figma-solution-body">
-            <h4>Solution 1 · Un tunnel vertical progressif dans une seule page</h4>
+            <h4>Solution 2 (UX) : Tunnel d'achat vertical progressif</h4>
             <p>On peut aussi imaginer un tunnel vertical avec chargement progressif des étapes. On serait alors dans une logique de <strong>progressive disclosure</strong>, avec un paiement intégré à la même page que le panier et les autres validations.</p>
-            <p style="margin-top:.65rem;">C’est la piste la plus fluide en termes d’expérience. Selon la réalité technique, elle pourrait passer par une intégration directe du module, par exemple via une iframe correctement habillée.</p>
+            <p style="margin-top:.65rem;">C’est la piste la plus fluide en termes d’expérience. Selon la réalité technique, elle devrait passer par une intégration directe du module, par exemple via une iframe.</p>
           </div>
         </div>
       </div>
